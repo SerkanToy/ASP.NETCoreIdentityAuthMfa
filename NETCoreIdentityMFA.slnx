@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="NETCoreIdentityMFA.Api/NETCoreIdentityMFA.Api.csproj" />
+  <Project Path="NETCoreIdentityMFA.Ui/NETCoreIdentityMFA.Ui.csproj" Id="d83bd908-578b-4090-90ef-5aebd7f69a2a" />
+</Solution>
