@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "NETCoreIdentityMFA.Api\\NETCoreIdentityMFA.Api.csproj",
+        "Action": "Start",
+        "DebugTarget": "https"
+      },
+      {
+        "Path": "NETCoreIdentityMFA.Ui\\NETCoreIdentityMFA.Ui.csproj",
+        "Action": "Start",
+        "DebugTarget": "https"
+      }
+    ]
+  }
+]

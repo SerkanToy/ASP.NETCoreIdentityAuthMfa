@@ -1,0 +1,284 @@
+﻿@page
+@model NETCoreIdentityMFA.Ui.Pages.Inbox.IndexModel
+@{
+    ViewData["Title"] = "Inbox Page";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@section inbox  {
+    <link rel="stylesheet" href="~/assets/vendor/tagsinput/bootstrap-tagsinput.min.css" />
+    <link rel="stylesheet" href="~/assets/css/inbox.css" />
+}
+
+<main class="app-body border">
+    <div class="d-flex flex-row h-100">
+        <nav class="navbar navbar-expand-xl p-0">
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasBodyMenu">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title">Inbox</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <div class="body-sidebar py-3 px-4 d-flex flex-column">
+                        <div class="d-flex flex-column gap-3 mb-3">
+                            <div class="position-relative">
+                                <img class="avatar avatar-xl border border-2 shadow-sm" src="../assets/images/avatar/avatar-1.png" loading="lazy" alt="User Avatar">
+                                <span class="position-absolute bottom-0 ms-2 start-0 bg-success rounded-circle border border-white" style="width:12px;height:12px;"></span>
+                            </div>
+                            <div>
+                                <h6 class="fw-semibold mb-0">Advait Patel</h6>
+                                <span class="text-muted small">advait.patel@gmail.com</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary rounded-3 w-100 d-flex align-items-center justify-content-center gap-2 btn-ripple" type="button" data-bs-toggle="modal" data-bs-target="#composeModal"><i class="bi bi-plus-circle"></i>Compose</button>
+                        <p class="small text-muted mb-1 mt-3">Mail</p>
+                        <ul class="menu-list list-unstyled lh-lg">
+                            <li>
+                                <a href="#" class="nav-link d-flex align-items-center gap-2 active">
+                                    <span><i class="bi bi-inbox"></i> Inbox</span>
+                                    <span class="ms-auto badge text-bg-light border">36</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link d-flex align-items-center gap-2">
+                                    <span><i class="bi bi-star"></i> Favourite</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link d-flex align-items-center gap-2">
+                                    <span><i class="bi bi-file-earmark-text"></i> Draft</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link d-flex align-items-center gap-2">
+                                    <span><i class="bi bi-exclamation-octagon"></i> Spam</span>
+                                    <span class="ms-auto badge text-bg-danger">+99</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link d-flex align-items-center gap-2">
+                                    <span><i class="bi bi-send"></i> Sent</span>
+                                    <span class="ms-auto badge text-bg-light border">36</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link d-flex align-items-center gap-2">
+                                    <span><i class="bi bi-trash"></i> Trash</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <p class="small text-muted mb-1 mt-3">Label</p>
+                        <ul class="list-unstyled lh-lg small">
+                            <li><a href="#" class="text-decoration-none color-inherit"><span class="label-dot me-2" style="background:#fb923c;"></span>Colleague</a></li>
+                            <li><a href="#" class="text-decoration-none color-inherit"><span class="label-dot me-2" style="background:#4dcf7d;"></span>Friend Circle</a></li>
+                            <li><a href="#" class="text-decoration-none color-inherit"><span class="label-dot me-2" style="background:#0ea5e9;"></span>Office</a></li>
+                            <li><a href="#" class="text-decoration-none color-inherit"><span class="label-dot me-2" style="background:#6366f1;"></span>Youtuber</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="body-content inbox-body d-flex flex-row rounded-start-4 h-100 border-start">
+            <div class="mail-list-pane">
+                <div class="mail-list-header d-flex align-items-center justify-content-between gap-2 small pb-0">
+                    <div class="d-flex align-items-center gap-2"><button class="btn p-0 btn-link btn-navbar-collapse d-none d-lg-block" type="button"><i class="bi bi-arrow-left-circle-fill"></i></button> Sort By: <span class="fw-medium">Newest First</span></div>
+                    <div class="d-flex align-items-center gap-2">
+                        <button class="btn btn-sm btn-ripple" aria-label="Refresh"><i class="bi bi-arrow-clockwise"></i></button>
+                        <button class="btn btn-sm btn-ripple" aria-label="More"><i class="bi bi-three-dots"></i></button>
+                        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBodyMenu" aria-controls="offcanvasMenu" aria-label="Toggle navigation">
+                            <i class="bi bi-list"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="mail-search-row mb-1">
+                    <div class="input-group input-group-sm border rounded-pill ps-2">
+                        <span class="input-group-text bg-transparent border-0 pe-0"><i class="bi bi-search"></i></span>
+                        <input type="text" class="form-control bg-transparent border-start-0 search-thread focus-ring-none border-0" placeholder="What are you looking">
+                    </div>
+                </div>
+                <div class="mail-list h-100 mail-list overflow-y-auto">
+                    <!-- Google -->
+                    <article class="mail-item gap-2 p-2 p-lg-3 d-flex mail-item-unread active">
+                        <img class="avatar border border-2 border-white" src="../assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar-1">
+                        <div class="mail-item-main">
+                            <div class="mail-item-row d-flex gap-2 align-items-center mb-1">
+                                <div class="d-flex align-items-center gap-1">
+                                    <h6 class="mail-item-title mb-0 small">Google Corporation</h6>
+                                    <span class="status-dot" style="background:#fa8738;"></span>
+                                </div>
+                                <span class="mail-item-time fs-12 text-muted ms-auto">Nov 15</span>
+                            </div>
+                            <p class="mail-item-subject text-muted mb-0 fs-12">Pixel 2 Launched</p>
+                            <div class="mail-item-snippet small">There are many variations of passages of Lorem Ipsum available in terms..</div>
+                        </div>
+                    </article>
+                    <!-- Behance -->
+                    <article class="mail-item gap-2 p-2 p-lg-3 d-flex mail-item-unread">
+                        <div class="avatar border border-2 border-white d-flex align-items-center justify-content-center bg-primary">
+                            <span class="avatar-text" style="font-size:.7rem;">Be</span>
+                        </div>
+                        <div class="mail-item-main">
+                            <div class="mail-item-row d-flex gap-2 align-items-center mb-1">
+                                <div class="d-flex align-items-center gap-1">
+                                    <h6 class="mail-item-title mb-0 small">Behance Corporation</h6>
+                                    <span class="status-dot" style="background:#6b21a8;"></span>
+                                </div>
+                                <span class="mail-item-time fs-12 text-muted ms-auto">Nov 15</span>
+                            </div>
+                            <p class="mail-item-subject text-muted mb-0 fs-12">New designer joined team</p>
+                            <div class="mail-item-snippet small">There are many variations of passages of Lorem Ipsum available in terms..</div>
+                        </div>
+                    </article>
+                    <!-- Jackelyn -->
+                    <article class="mail-item gap-2 p-2 p-lg-3 d-flex">
+                        <img class="avatar border border-2 border-white" src="../assets/images/avatar/avatar-2.png" loading="lazy" alt="avatar-2">
+                        <div class="mail-item-main">
+                            <div class="mail-item-row d-flex gap-2 align-items-center mb-1">
+                                <h6 class="mail-item-title mb-0 small">Jackelyn Dugas</h6>
+                                <span class="mail-item-time fs-12 text-muted ms-auto">Nov 13</span>
+                            </div>
+                            <p class="mail-item-subject text-muted mb-0 fs-12">We attached documents</p>
+                            <div class="mail-item-snippet small">There are many variations of passages of Lorem Ipsum available in terms..</div>
+                        </div>
+                    </article>
+                    <!-- Facebook -->
+                    <article class="mail-item gap-2 p-2 p-lg-3 d-flex">
+                        <div class="avatar border border-2 border-white d-flex align-items-center justify-content-center bg-primary">
+                            <span class="avatar-text" style="font-size:.7rem;">FB</span>
+                        </div>
+                        <div class="mail-item-main">
+                            <div class="mail-item-row d-flex gap-2 align-items-center mb-1">
+                                <h6 class="mail-item-title mb-0 small">Facebook.io</h6>
+                                <span class="mail-item-time fs-12 text-muted ms-auto">Nov 13</span>
+                            </div>
+                            <p class="mail-item-subject text-muted mb-0 fs-12">Facebook Authorized Mail</p>
+                            <div class="mail-item-snippet small">There are many variations of passages of Lorem Ipsum available in terms..</div>
+                        </div>
+                    </article>
+                    <!-- Onie -->
+                    <article class="mail-item gap-2 p-2 p-lg-3 d-flex">
+                        <div class="avatar border border-2 border-white d-flex align-items-center justify-content-center bg-success">
+                            <span class="avatar-text" style="font-size:.7rem;">OM</span>
+                        </div>
+                        <div class="mail-item-main">
+                            <div class="mail-item-row d-flex gap-2 align-items-center mb-1">
+                                <h6 class="mail-item-title mb-0 small">Onie Montanez</h6>
+                                <span class="mail-item-time fs-12 text-muted ms-auto">Nov 13</span>
+                            </div>
+                            <p class="mail-item-subject text-muted mb-0 fs-12">New Game released Today</p>
+                            <div class="mail-item-snippet small">There are many variations of passages of Lorem Ipsum available in terms..</div>
+                        </div>
+                    </article>
+                    <!-- Dana -->
+                    <article class="mail-item gap-2 p-2 p-lg-3 d-flex">
+                        <img class="avatar border border-2 border-white" src="../assets/images/avatar/avatar-3.png" loading="lazy" alt="avatar-3">
+                        <div class="mail-item-main">
+                            <div class="mail-item-row d-flex gap-2 align-items-center mb-1">
+                                <h6 class="mail-item-title mb-0 small">Dana Millett</h6>
+                                <span class="mail-item-time fs-12 text-muted ms-auto">Nov 10</span>
+                            </div>
+                            <p class="mail-item-subject text-muted mb-0 fs-12">DBBL Monthly Sallary sent</p>
+                            <div class="mail-item-snippet small">There are many variations of passages of Lorem Ipsum available in terms..</div>
+                        </div>
+                    </article>
+                    <!-- Facebook -->
+                    <article class="mail-item gap-2 p-2 p-lg-3 d-flex">
+                        <div class="avatar border border-2 border-white d-flex align-items-center justify-content-center bg-primary">
+                            <span class="avatar-text" style="font-size:.7rem;">FB</span>
+                        </div>
+                        <div class="mail-item-main">
+                            <div class="mail-item-row d-flex gap-2 align-items-center mb-1">
+                                <h6 class="mail-item-title mb-0 small">Facebook.io</h6>
+                                <span class="mail-item-time fs-12 text-muted ms-auto">Nov 09</span>
+                            </div>
+                            <p class="mail-item-subject text-muted mb-0 fs-12">Facebook Authorized Mail</p>
+                            <div class="mail-item-snippet small">There are many variations of passages of Lorem Ipsum available in terms..</div>
+                        </div>
+                    </article>
+                    <!-- Onie -->
+                    <article class="mail-item gap-2 p-2 p-lg-3 d-flex">
+                        <div class="avatar border border-2 border-white d-flex align-items-center justify-content-center bg-success">
+                            <span class="avatar-text" style="font-size:.7rem;">OM</span>
+                        </div>
+                        <div class="mail-item-main">
+                            <div class="mail-item-row d-flex gap-2 align-items-center mb-1">
+                                <h6 class="mail-item-title mb-0 small">Onie Montanez</h6>
+                                <span class="mail-item-time fs-12 text-muted ms-auto">Nov 03</span>
+                            </div>
+                            <p class="mail-item-subject text-muted mb-0 fs-12">New Game released Today</p>
+                            <div class="mail-item-snippet small">There are many variations of passages of Lorem Ipsum available in terms..</div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="mail-detail-pane d-flex flex-column">
+                <button class="btn btn-sm d-lg-none end-0 fs-4 fs-5 mail-detail-close p-0 position-absolute top-0" type="button">
+                    <i class="bi bi-x-circle-fill"></i>
+                </button>
+                <div class="mail-detail-header d-flex align-items-center justify-content-between gap-2 small flex-wrap">
+                    <div class="mail-detail-from d-flex align-items-start gap-2">
+                        <img class="avatar avatar-md border border-2 border-white" src="../assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar-1">
+                        <div class="mail-from-text">
+                            <h6 class="fw-semibold mb-0">Google Corporation</h6>
+                            <p class="text-muted small mb-1">devidjustin@gmail.com</p>
+                            <div>
+                                <span class="small opacity-75 me-2"><i class="bi bi-calendar-event"></i> Feb 14, 2026</span>
+                                <span class="small opacity-75"><i class="bi bi-clock"></i> 02:59 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 text-muted flex-wrap">
+                        <button class="btn btn-sm" aria-label="Reply"><i class="bi bi-reply"></i></button>
+                        <button class="btn btn-sm" aria-label="Forward"><i class="bi bi-arrow-return-right"></i></button>
+                        <button class="btn btn-sm" aria-label="Delete"><i class="bi bi-trash"></i></button>
+                        <button class="btn btn-sm" aria-label="More"><i class="bi bi-three-dots"></i></button>
+                        <button class="btn fs-14 btn-link px-2 btn-ripple btn-fullscreen-main d-none d-lg-inline-block" data-bs-toggle="tooltip" data-bs-title="Main App Body Fullscreen"><i class="bi bi-fullscreen"></i></button>
+                    </div>
+                </div>
+                <div class="mail-detail-body p-3 p-lg-4 overflow-y-auto d-flex flex-column">
+                    <h4 class="mail-subject-line">Android Noggut UI system has updated</h4>
+                    <div class="d-flex flex-wrap gap-2 mb-3">
+                        <span class="badge bg-primary">user</span>
+                        <span class="badge bg-warning">Management</span>
+                        <span class="badge bg-dark">team</span>
+                        <span class="badge bg-danger">office</span>
+                    </div>
+                    <p class="mb-2 text-muted small">Hi Support Team,</p>
+                    <p>
+                        There are many variations of passages of Lorem Ipsum available, but the majority have
+                        suffered alteration in some form, by injected humour, or randomised words which don't look even
+                        slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there
+                        isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the
+                        Internet tend to repeat.
+                    </p>
+                    <p>
+                        It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to
+                        generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from
+                        repetition, injected humour, or non-characteristic words etc.
+                    </p>
+                    <div class="attachment-card">
+                        <div class="border d-inline-flex p-3 rounded-3 mb-3 gap-3">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="avatar avatar-text bg-primary"><i class="bi bi-paperclip"></i></span>
+                                <div>
+                                    <div class="fw-semibold small text-primary">Stylesheet.css</div>
+                                    <div class="small text-muted">350.74 KB</div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <button class="btn btn-sm btn-outline-secondary btn-ripple rounded-circle" aria-label="Download"><i class="bi bi-download"></i></button>
+                                <button class="btn btn-sm btn-outline-secondary btn-ripple rounded-circle" aria-label="Forward"><i class="bi bi-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="small mb-0 mt-auto">
+                        Click here to
+                        <a href="#" class="text-primary text-decoration-none">Reply</a> or
+                        <a href="#" class="text-primary text-decoration-none">Forward</a>
+                        to Devid Justin message.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
