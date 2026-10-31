@@ -1,0 +1,221 @@
+﻿@page "~/todo"
+@model NETCoreIdentityMFA.Ui.Pages.Todo.TodoModel
+@{
+    ViewData["Title"] = "Todo Page";
+    ViewData["ccs"] = "body-layout";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@section Css {
+
+}
+
+@section Scripts {
+    <script src="~/assets/vendor/apexcharts/apexcharts.js"></script>
+    <script src="~/assets/js/apps/app-todo.js"></script>
+}
+
+
+<main class="app-body border">
+    <div class="container-fluid p-lg-0">
+        <div class="d-flex flex-row">
+            <div class="body-content py-2 py-lg-4 p-lg-4 flex-grow-1">
+                <!-- page header, Breadcrumb and page action btn -->
+                <div class="page-header d-flex flex-wrap justify-content-between align-items-center mb-4">
+                    <div class="align-items-lg-start d-flex flex-column justify-content-center">
+                        <h1 class="fs-5 section-title mb-0">Tuesday, June 19</h1>
+                        <h2 class="small text-muted fw-normal">Welcome back to DashQ workspace.</h2>
+                    </div>
+                    <div class="d-flex gap-1 align-items-center flex-fill flex-sm-grow-0 border border-secondary-subtle rounded-pill px-2 mt-2 mt-md-0">
+                        <input class="form-control fs-14 border-0 bg-transparent rounded-pill js-daterange focus-ring-none" type="text" name="daterange" aria-label="Date Range Filter">
+                        <div class="vr"></div>
+                        <div class="d-flex gap-1">
+                            <button class="btn fs-14 btn-link px-2 btn-ripple" aria-label="Share with"><i class="bi bi-share"></i></button>
+                            <button class="btn fs-14 btn-link px-2 btn-ripple" aria-label="PDF Download"><i class="bi bi-filetype-pdf"></i></button>
+                            <button class="btn fs-14 btn-link px-2 btn-ripple btn-fullscreen-main d-none d-sm-inline-block" data-bs-toggle="tooltip" data-bs-title="Main App Body Fullscreen" aria-label="Main App Body Fullscreen"><i class="bi bi-fullscreen"></i></button>
+                            <button class="btn p-0 btn-link rightside btn-navbar-collapse d-none d-xl-block" type="button"><i class="bi bi-arrow-left-circle-fill"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Activity Chart -->
+                <div class="d-flex justify-content-between align-items-center">
+                    <h6 class="fw-semibold">Activity</h6>
+                    <small class="text-muted"><strong>67:30</strong> hours in last 2 months</small>
+                </div>
+                <div class="card mt-0 rounded-4" id="activityChart"></div>
+                <!-- Current Week -->
+                <div class="mt-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="fw-semibold">Current week</h6>
+                        <div>
+                            <a href="#" class="text-primary small me-3">All Tasks</a>
+                            <a href="#" class="text-muted small">My Tasks</a>
+                        </div>
+                    </div>
+                    <!-- Task -->
+                    <div class="task-row d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
+                            <input class="form-check-input me-lg-3 me-1 mt-0 fs-5" type="checkbox">
+                            <div class="flex-grow-1 text-truncate">
+                                Using Environment Variables
+                                <span class="badge bg-warning text-white ms-2">auth</span>
+                            </div>
+                        </div>
+                        <div class="d-md-flex align-items-center gap-2 gap-lg-3 d-none">
+                            <small class="text-muted">In progress</small>
+                            <strong>02:36</strong>
+                            <img src="~/assets/images/avatar/avatar-1.png" class="avatar avatar-sm" alt="user avatar" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="task-row d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
+                            <input class="form-check-input me-lg-3 me-1 mt-0 fs-5" type="checkbox" checked>
+                            <div class="flex-grow-1 text-truncate">
+                                Setup server at Heroku
+                                <span class="badge bg-primary text-white ms-2">Due 28 Dec</span>
+                            </div>
+                        </div>
+                        <div class="d-md-flex align-items-center gap-2 gap-lg-3 d-none">
+                            <small class="text-muted">Done</small>
+                            <strong>03:28</strong>
+                            <img src="~/assets/images/avatar/avatar-2.png" class="avatar avatar-sm" alt="user avatar" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="task-row d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
+                            <input class="form-check-input me-lg-3 me-1 mt-0 fs-5" type="checkbox">
+                            <div class="flex-grow-1 text-truncate">
+                                Configure Vue Boilerplate
+                            </div>
+                        </div>
+                        <div class="d-md-flex align-items-center gap-2 gap-lg-3 d-none">
+                            <small class="text-muted">Running</small>
+                            <strong class="text-primary">00:36</strong>
+                            <button class="btn avatar avatar-sm avatar-text bg-primary"><i class="bi bi-pause-fill"></i></button>
+                        </div>
+                    </div>
+                    <div class="task-row d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
+                            <input class="form-check-input me-lg-3 me-1 mt-0 fs-5" type="checkbox" checked>
+                            <div class="flex-grow-1 text-truncate">
+                                Automated Visual Testing
+                            </div>
+                        </div>
+                        <div class="d-md-flex align-items-center gap-2 gap-lg-3 d-none">
+                            <small class="text-muted">Done</small>
+                            <img src="~/assets/images/avatar/avatar-3.png" class="avatar avatar-sm" alt="user avatar" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+                <!-- Things To Do -->
+                <div class="mt-5">
+                    <h6 class="fw-semibold mb-3">Things to do</h6>
+                    <div class="task-row d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
+                            <input class="form-check-input me-lg-3 me-1 mt-0 fs-5" type="checkbox">
+                            <div class="flex-grow-1 text-truncate">Exporting Storybook as a Static App</div>
+                        </div>
+                        <div class="d-md-flex align-items-center gap-2 gap-lg-3 d-none">
+                            <small class="text-muted">In progress</small>
+                            <img src="~/assets/images/avatar/avatar-5.png" class="avatar avatar-sm" alt="user avatar" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="task-row d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
+                            <input class="form-check-input me-lg-3 me-1 mt-0 fs-5" type="checkbox">
+                            <div class="flex-grow-1 text-truncate">Custom Webpack Config</div>
+                        </div>
+                        <div class="d-md-flex align-items-center gap-2 gap-lg-3 d-none">
+                            <i class="bi bi-grip-vertical text-muted"></i>
+                        </div>
+                    </div>
+                    <div class="task-row d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-grow-1">
+                            <input class="form-check-input me-lg-3 me-1 mt-0 fs-5" type="checkbox">
+                            <div class="flex-grow-1 text-truncate">
+                                Theming Storybook
+                                <span class="badge bg-warning text-white ms-2">design</span>
+                            </div>
+                        </div>
+                        <div class="d-md-flex align-items-center gap-2 gap-lg-3 d-none">
+                            <i class="bi bi-grip-vertical text-muted"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- user right -->
+            <nav class="navbar navbar-expand-lg p-0 bg-primary-gradient">
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasBodyMenu">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title">My Todo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div class="body-sidebar p-3 p-lg-4 d-flex flex-column text-white">
+                            <div class="d-flex flex-column gap-3 mb-3">
+                                <div class="position-relative">
+                                    <img class="avatar avatar-xl border border-2 shadow-sm" src="~/assets/images/avatar/avatar-1.png" loading="lazy" alt="User Avatar">
+                                    <span class="position-absolute bottom-0 ms-2 start-0 bg-success rounded-circle border border-white" style="width:12px;height:12px;"></span>
+                                </div>
+                                <div>
+                                    <h6 class="fw-semibold mb-0">Advait Patel</h6>
+                                    <span class="small">advait.patel@gmail.com</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-dark rounded-pill w-100 d-flex align-items-center justify-content-center gap-2 btn-ripple" data-bs-toggle="modal" data-bs-target="#createMeeting"><i class="bi bi-plus-circle"></i>Create new Meeting</button>
+                            <p class="small text-uppercase mb-2 mt-3">Meetings Schedule</p>
+                            <ul class="mb-0 ps-3">
+                                <li class="mb-4">
+                                    <p class="small mb-1 opacity-50">9:30 to 10:15</p>
+                                    <h6>New UI Project</h6>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <div class="d-flex align-items-center avatar-group ps-2 flex-grow-1">
+                                            <img class="avatar avatar-sm border border-1 border-white" src="~/assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar-1">
+                                            <img class="avatar avatar-sm border border-1 border-white" src="~/assets/images/avatar/avatar-2.png" loading="lazy" alt="avatar-2">
+                                            <img class="avatar avatar-sm border border-1 border-white" src="~/assets/images/avatar/avatar-3.png" loading="lazy" alt="avatar-3">
+                                            <img class="avatar avatar-sm border border-1 border-white" src="~/assets/images/avatar/avatar-4.png" loading="lazy" alt="avatar-4">
+                                            <div class="avatar avatar-sm border border-1 border-white d-flex align-items-center justify-content-center" style="background:#4dcf7d;">
+                                                <span class="avatar-text" style="font-size:.7rem;">+5</span>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-sm fs-12 btn-ripple px-3 rounded-pill bg-body-tertiary">Start</button>
+                                    </div>
+                                </li>
+                                <li class="mb-4">
+                                    <p class="small mb-1 opacity-50">10:30 to 11:30</p>
+                                    <h6>Client Meeting</h6>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <div class="d-flex align-items-center avatar-group ps-2 flex-grow-1">
+                                            <img class="avatar avatar-sm border border-1 border-white" src="~/assets/images/avatar/avatar-5.png" loading="lazy" alt="avatar iamge">
+                                            <img class="avatar avatar-sm border border-1 border-white" src="~/assets/images/avatar/avatar-6.png" loading="lazy" alt="avatar iamge">
+                                            <div class="avatar avatar-sm border border-1 border-white d-flex align-items-center justify-content-center" style="background:#6366f1;">
+                                                <span class="avatar-text" style="font-size:.7rem;">+3</span>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-sm fs-12 btn-ripple px-3 rounded-pill bg-body-tertiary">Join</button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p class="small mb-1 opacity-50">12:00 to 1:00</p>
+                                    <h6>Design Review</h6>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <div class="d-flex align-items-center avatar-group ps-2 flex-grow-1">
+                                            <img class="avatar avatar-sm border border-1 border-white" src="~/assets/images/avatar/avatar-7.png" loading="lazy" alt="avatar iamge">
+                                            <img class="avatar avatar-sm border border-1 border-white" src="~/assets/images/avatar/avatar-8.png" loading="lazy" alt="avatar iamge">
+                                            <img class="avatar avatar-sm border border-1 border-white" src="~/assets/images/avatar/avatar-9.png" loading="lazy" alt="avatar iamge">
+                                        </div>
+                                        <button class="btn btn-sm fs-12 btn-ripple px-3 rounded-pill bg-body-tertiary">Start</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- Menu toggle fix view only small device -->
+        <button class="bg-primary bottom-0 d-lg-none end-0 fs-2 mb-5 me-3 navbar-toggler p-2 position-fixed rounded-circle text-white z-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBodyMenu" aria-controls="offcanvasMenu" aria-label="Toggle navigation">
+            <i class="bi bi-list"></i>
+        </button>
+    </div>
+</main>
