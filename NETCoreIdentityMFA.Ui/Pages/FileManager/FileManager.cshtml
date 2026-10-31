@@ -1,0 +1,369 @@
+﻿@page "~/filemanager"
+@model NETCoreIdentityMFA.Ui.Pages.FileManager.FileManagerModel
+
+@{
+    ViewData["Title"] = "File Manager Page";
+    ViewData["ccs"] = "body-layout md";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@section Css {
+    <link rel="stylesheet" href="~/assets/vendor/datatables/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/datatables/dataTables.responsive.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/datatable.css">
+}
+
+@section Scripts {
+    <script src="~/assets/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/assets/vendor/datatables/dataTables.responsive.js"></script>
+    <script src="~/assets/js/datatable-page.js"></script>
+}
+
+
+<main class="app-body border">
+    <div class="container-fluid">
+        <div class="d-flex flex-row">
+            <!-- Body Sidebar menu -->
+            <nav class="navbar navbar-expand-lg p-0">
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasBodyMenu">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title">File Manager</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div class="body-sidebar p-3 d-flex flex-column">
+                            <div class="d-flex flex-column gap-3 mb-3">
+                                <div class="position-relative">
+                                    <img class="avatar avatar-xl border border-2 shadow-sm" src="../assets/images/avatar/avatar-1.png" loading="lazy" alt="User Avatar">
+                                    <span class="position-absolute bottom-0 ms-2 start-0 bg-success rounded-circle border border-white" style="width:12px;height:12px;"></span>
+                                </div>
+                                <div>
+                                    <h6 class="fw-semibold mb-0">Advait Patel</h6>
+                                    <span class="text-muted small">advait.patel@gmail.com</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary rounded-3 w-100 d-flex align-items-center justify-content-center gap-2 btn-ripple"><i class="bi bi-plus-circle"></i>Add New</button>
+                            <p class="small text-muted mb-1 mt-3">My Drive</p>
+                            <ul class="menu-list list-unstyled lh-lg">
+                                <li>
+                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                        <i class="bi bi-house"></i> Home
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                        <i class="bi bi-folder"></i> My Files
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                        <i class="bi bi-share"></i> Shared Files
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                        <i class="bi bi-star"></i> Starred
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                        <i class="bi bi-trash"></i> Trash
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- Upgrade card -->
+                            <div class="card rounded-4">
+                                <div class="card-body p-lg-4">
+                                    <h6 class="fw-semibold">Need More Space?</h6>
+                                    <p class="text-muted small mb-3">Get more storage by upgrading your plan.</p>
+                                    <button class="btn btn-primary rounded-3 w-100 btn-ripple">Upgrade Plan</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div class="body-content py-2 py-lg-4 p-lg-4">
+                <!-- page header, Breadcrumb and page action btn -->
+                <div class="page-header d-flex flex-wrap justify-content-between align-items-center mb-3">
+                    <div class="d-inline-flex align-items-start gap-2">
+                        <button class="btn p-0 btn-link btn-navbar-collapse d-none d-lg-block" type="button"><i class="bi bi-arrow-left-circle-fill"></i></button>
+                        <div>
+                            <h1 class="fs-5 section-title mb-0">File Manager</h1>
+                            <h2 class="small text-muted fw-normal">Welcome back to DashQ workspace.</h2>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-1 align-items-center flex-fill flex-sm-grow-0 border border-secondary-subtle rounded-pill px-2 mt-2 mt-md-0">
+                        <input class="form-control fs-14 border-0 bg-transparent rounded-pill js-daterange focus-ring-none" type="text" name="daterange" aria-label="Date Range Filter">
+                        <div class="vr"></div>
+                        <div class="d-flex gap-1">
+                            <button class="btn fs-14 btn-link px-2 btn-ripple" aria-label="Share with"><i class="bi bi-share"></i></button>
+                            <button class="btn fs-14 btn-link px-2 btn-ripple" aria-label="PDF Download"><i class="bi bi-filetype-pdf"></i></button>
+                            <button class="btn fs-14 btn-link px-2 btn-ripple btn-fullscreen-main d-none d-sm-inline-block" data-bs-toggle="tooltip" data-bs-title="Main App Body Fullscreen" aria-label="Main App Body Fullscreen"><i class="bi bi-fullscreen"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <!-- QUICK ACCESS -->
+                    <div class="col-12">
+                        <div class="card mini rounded-4">
+                            <div class="card-title d-flex align-items-center justify-content-between px-3 rounded-top-4">
+                                <div class="fs-12 opacity-75 text-truncate">
+                                    Quick Access
+                                </div>
+                                <div class="dropdown d-flex align-items-center gap-2">
+                                    <a href="#" aria-label="add new in cards"><i class="bi bi-plus"></i></a>
+                                    <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Card Action"><i class="bi bi-three-dots"></i></a>
+                                    <ul class="dropdown-menu li_animate shadow rounded-4 p-3 fs-14">
+                                        <li><a class="dropdown-item rounded-pill" href="#"><i class="me-2 bi bi-share"></i>Share</a></li>
+                                        <li><a class="dropdown-item rounded-pill" href="#"><i class="me-2 bi bi-pencil-square"></i>Remane</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item rounded-pill" href="#"><i class="me-2 bi bi-box-arrow-up-right"></i>Copy Link Address</a></li>
+                                        <li><a class="dropdown-item rounded-pill" href="#"><i class="me-2 bi bi-arrows-move"></i>Move to</a></li>
+                                        <li><a class="dropdown-item rounded-pill" href="#"><i class="me-2 bi bi-copy"></i>Copy to</a></li>
+                                        <li><a class="dropdown-item rounded-pill" href="#"><i class="me-2 bi bi-shield-check"></i>Make Private</a></li>
+                                        <li><a class="dropdown-item rounded-pill" href="#"><i class="me-2 bi bi-download"></i>Download</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body p-lg-4">
+                                <div class="row g-3">
+                                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-3 col-sm-6 col-6">
+                                        <div class="d-flex align-items-center flex-column p-4 rounded-4 border gap-2 text-center h-100">
+                                            <i class="bi bi-folder-fill fs-2 text-secondary"></i>
+                                            <a href="#" class="small fw-semibold color-inherit text-decoration-none">Human Centered Design</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-3 col-sm-6 col-6">
+                                        <div class="d-flex align-items-center flex-column p-4 rounded-4 border gap-2 text-center h-100">
+                                            <i class="bi bi-file-earmark-pdf-fill fs-2 text-danger"></i>
+                                            <a href="#" class="small fw-semibold color-inherit text-decoration-none">Thinking With Type.pdf</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-3 col-sm-6 col-6">
+                                        <div class="d-flex align-items-center flex-column p-4 rounded-4 border gap-2 text-center h-100">
+                                            <i class="bi bi-file-earmark-word-fill fs-2 text-primary"></i>
+                                            <a href="#" class="small fw-semibold color-inherit text-decoration-none">Product Roadmap.docx</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-3 col-sm-6 col-6">
+                                        <div class="d-flex align-items-center flex-column p-4 rounded-4 border gap-2 text-center h-100">
+                                            <i class="bi bi-file-zip-fill fs-2 text-success"></i>
+                                            <a href="#" class="small fw-semibold color-inherit text-decoration-none">3D Illustration Pack.zip</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-primary p-3 p-lg-4 rounded-4 border-0 small mb-0 mt-3">
+                            We have updated our Terms and Conditions! <a class="alert-link" href="#">Read the announcement now</a>.
+                        </div>
+                    </div>
+                    <!-- RECENTS -->
+                    <div class="col-xl-8">
+                        <h6>Suggested File</h6>
+                        <div class="card rounded-4 mt-0">
+                            <div class="card-body p-0">
+                                <table class="table table-hover align-middle small dataTable w-100 border-bottom-none">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Modified</th>
+                                            <th>Size</th>
+                                            <th>Share with</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><i class="bi bi-folder"></i> Design Project</td>
+                                            <td>Nov 24, 2025</td>
+                                            <td>200 MB</td>
+                                            <td>
+                                                <div class="d-flex align-items-center avatar-group ps-2">
+                                                    <img class="avatar avatar-sm border border-2 border-white" src="../assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar-1">
+                                                    <img class="avatar avatar-sm me-n2 border border-2 border-white" src="../assets/images/avatar/avatar-2.png" loading="lazy" alt="avatar-2">
+                                                    <div class="avatar avatar-sm border border-2 border-white d-flex align-items-center justify-content-center bg-primary">
+                                                        <span class="avatar-text" style="font-size:.7rem;">+2</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-end"><button class="btn btn-sm btn-link btn-ripple"><i class="bi bi-three-dots"></i></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="bi bi-folder"></i> Client Detail</td>
+                                            <td>Nov 24, 2025</td>
+                                            <td>5 MB</td>
+                                            <td>
+                                                <div class="d-flex align-items-center avatar-group ps-2">
+                                                    <img class="avatar avatar-sm border border-2 border-white" src="../assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar-1">
+                                                    <img class="avatar avatar-sm me-n2 border border-2 border-white" src="../assets/images/avatar/avatar-2.png" loading="lazy" alt="avatar-2">
+                                                    <div class="avatar avatar-sm border border-2 border-white d-flex align-items-center justify-content-center bg-primary">
+                                                        <span class="avatar-text" style="font-size:.7rem;">+2</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-end"><button class="btn btn-sm btn-link btn-ripple"><i class="bi bi-three-dots"></i></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="bi bi-folder"></i> Tax File 2025</td>
+                                            <td>Nov 24, 2025</td>
+                                            <td>9.5 MG</td>
+                                            <td>
+                                                <div class="d-flex align-items-center avatar-group ps-2">
+                                                    <img class="avatar avatar-sm border border-2 border-white" src="../assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar-1">
+                                                    <img class="avatar avatar-sm me-n2 border border-2 border-white" src="../assets/images/avatar/avatar-2.png" loading="lazy" alt="avatar-2">
+                                                    <div class="avatar avatar-sm border border-2 border-white d-flex align-items-center justify-content-center bg-primary">
+                                                        <span class="avatar-text" style="font-size:.7rem;">+2</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-end"><button class="btn btn-sm btn-link btn-ripple"><i class="bi bi-three-dots"></i></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="bi bi-file-earmark"></i> UX Principles.docx</td>
+                                            <td>Nov 24, 2025</td>
+                                            <td>678 KB</td>
+                                            <td>
+                                                <div class="d-flex align-items-center avatar-group ps-2">
+                                                    <img class="avatar avatar-sm border border-2 border-white" src="../assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar-1">
+                                                    <img class="avatar avatar-sm me-n2 border border-2 border-white" src="../assets/images/avatar/avatar-2.png" loading="lazy" alt="avatar-2">
+                                                    <div class="avatar avatar-sm border border-2 border-white d-flex align-items-center justify-content-center bg-primary">
+                                                        <span class="avatar-text" style="font-size:.7rem;">+2</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-end"><button class="btn btn-sm btn-link btn-ripple"><i class="bi bi-three-dots"></i></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="bi bi-file-earmark-pdf"></i> Dont Make Me Think.pdf</td>
+                                            <td>Nov 22, 2025</td>
+                                            <td>14 MB</td>
+                                            <td>
+                                                <div class="d-flex align-items-center avatar-group ps-2">
+                                                    <img class="avatar avatar-sm border border-2 border-white" src="../assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar-1">
+                                                    <img class="avatar avatar-sm me-n2 border border-2 border-white" src="../assets/images/avatar/avatar-2.png" loading="lazy" alt="avatar-2">
+                                                    <div class="avatar avatar-sm border border-2 border-white d-flex align-items-center justify-content-center bg-primary">
+                                                        <span class="avatar-text" style="font-size:.7rem;">+3</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-end"><button class="btn btn-sm btn-link btn-ripple"><i class="bi bi-three-dots"></i></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="bi bi-folder"></i> UI/UX Portfolio</td>
+                                            <td>Nov 21, 2025</td>
+                                            <td>1.1 GB</td>
+                                            <td>
+                                                <div class="d-flex align-items-center avatar-group ps-2">
+                                                    <img class="avatar avatar-sm border border-2 border-white" src="../assets/images/avatar/avatar-5.png" loading="lazy" alt="avatar-5">
+                                                    <img class="avatar avatar-sm me-n2 border border-2 border-white" src="../assets/images/avatar/avatar-10.png" loading="lazy" alt="avatar-10">
+                                                    <div class="avatar avatar-sm border border-2 border-white d-flex align-items-center justify-content-center bg-primary">
+                                                        <span class="avatar-text" style="font-size:.7rem;">+7</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-end"><button class="btn btn-sm btn-link btn-ripple"><i class="bi bi-three-dots"></i></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="bi bi-file-earmark-pdf"></i> Atomic Design.pdf</td>
+                                            <td>Nov 20, 2025</td>
+                                            <td>6 MB</td>
+                                            <td>
+                                                <div class="d-flex align-items-center avatar-group ps-2">
+                                                    <img class="avatar avatar-sm border border-2 border-white" src="../assets/images/avatar/avatar-6.png" loading="lazy" alt="avatar-6">
+                                                    <img class="avatar avatar-sm me-n2 border border-2 border-white" src="../assets/images/avatar/avatar-8.png" loading="lazy" alt="avatar-8">
+                                                    <div class="avatar avatar-sm border border-2 border-white d-flex align-items-center justify-content-center bg-primary">
+                                                        <span class="avatar-text" style="font-size:.7rem;">+5</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-end"><button class="btn btn-sm btn-link btn-ripple"><i class="bi bi-three-dots"></i></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="bi bi-plug-fill"></i> Sketch Plugin</td>
+                                            <td>Nov 20, 2025</td>
+                                            <td>381 MB</td>
+                                            <td>
+                                                <div class="d-flex align-items-center avatar-group ps-2">
+                                                    <img class="avatar avatar-sm border border-2 border-white" src="../assets/images/avatar/avatar-4.png" loading="lazy" alt="avatar-4">
+                                                    <img class="avatar avatar-sm me-n2 border border-2 border-white" src="../assets/images/avatar/avatar-5.png" loading="lazy" alt="avatar-5">
+                                                    <div class="avatar avatar-sm border border-2 border-white d-flex align-items-center justify-content-center bg-primary">
+                                                        <span class="avatar-text" style="font-size:.7rem;">+5</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-end"><button class="btn btn-sm btn-link btn-ripple"><i class="bi bi-three-dots"></i></button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <!-- Profile + Storage -->
+                        <h6>Storage</h6>
+                        <div class="card rounded-4 mt-0">
+                            <div class="card-body p-lg-4">
+                                <div class="fw-semibold fs-5">92.8 GB <span class="text-muted fs-6 fw-normal">/ 100 GB</span></div>
+                                <div class="progress my-3" style="height:8px;">
+                                    <div class="progress-bar bg-primary" style="width:40%;"></div>
+                                    <div class="progress-bar bg-info" style="width:25%;"></div>
+                                    <div class="progress-bar bg-warning" style="width:20%;"></div>
+                                    <div class="progress-bar bg-danger" style="width:7%;"></div>
+                                </div>
+                                <ul class="li_animate p-0 mb-0">
+                                    <li class="d-flex justify-content-between align-items-center gap-2 py-2 my-1 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="avatar avatar-md avatar-text bg-body-tertiary rounded-3 fs-5 text-primary"><i class="bi bi-images"></i></div>
+                                            <div>
+                                                <h6 class="mb-0">Images</h6>
+                                                <span class="opacity-50 fs-12">1,760</span>
+                                            </div>
+                                        </div>
+                                        <span class="fs-6">37.2 GB</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-center gap-2 py-2 my-1 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="avatar avatar-md avatar-text bg-body-tertiary rounded-3 fs-5 text-info"><i class="bi bi-camera-reels"></i></div>
+                                            <div>
+                                                <h6 class="mb-0">Videos</h6>
+                                                <span class="opacity-50 fs-12">160</span>
+                                            </div>
+                                        </div>
+                                        <span class="fs-6">19.4 GB</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-center gap-2 py-2 my-1 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="avatar avatar-md avatar-text bg-body-tertiary rounded-3 fs-5 text-warning"><i class="bi bi-file-earmark-text"></i></div>
+                                            <div>
+                                                <h6 class="mb-0">Documents</h6>
+                                                <span class="opacity-50 fs-12">67</span>
+                                            </div>
+                                        </div>
+                                        <span class="fs-6">23.4 MB</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-center gap-2 py-2 my-0">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="avatar avatar-md avatar-text bg-body-tertiary rounded-3 fs-5 text-danger"><i class="bi bi-box"></i></div>
+                                            <div>
+                                                <h6 class="mb-0">Others</h6>
+                                                <span class="opacity-50 fs-12">24</span>
+                                            </div>
+                                        </div>
+                                        <span class="fs-6">11.1 MB</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Menu toggle fix view only small device -->
+        <button class="bg-primary bottom-0 d-lg-none end-0 fs-2 mb-5 me-3 navbar-toggler p-2 position-fixed rounded-circle text-white z-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBodyMenu" aria-controls="offcanvasMenu" aria-label="Toggle navigation">
+            <i class="bi bi-list"></i>
+        </button>
+    </div>
+</main>

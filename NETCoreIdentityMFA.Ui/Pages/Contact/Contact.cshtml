@@ -1,0 +1,294 @@
+﻿@page "~/contact"
+@model NETCoreIdentityMFA.Ui.Pages.Contact.ContactModel
+@{
+    ViewData["Title"] = "Contact Page";
+    ViewData["ccs"] = "body-layout sm";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+
+<main class="app-body border">
+    <div class="container-fluid">
+        <div class="d-flex flex-row">
+            <!-- Body Sidebar menu -->
+            <nav class="navbar navbar-expand-lg p-0">
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasBodyMenu">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title">My Contact</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div class="body-sidebar p-3 d-flex flex-column">
+                            <div class="d-flex flex-column gap-3 mb-3">
+                                <div class="position-relative">
+                                    <img class="avatar avatar-xl border border-2 shadow-sm" src="../assets/images/avatar/avatar-1.png" loading="lazy" alt="User Avatar">
+                                    <span class="position-absolute bottom-0 ms-2 start-0 bg-success rounded-circle border border-white" style="width:12px;height:12px;"></span>
+                                </div>
+                                <div>
+                                    <h6 class="fw-semibold mb-0">Advait Patel</h6>
+                                    <span class="text-muted small">advait.patel@gmail.com</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary rounded-3 w-100 d-flex align-items-center justify-content-center gap-2 btn-ripple"><i class="bi bi-plus-circle"></i>Add New</button>
+                            <p class="small text-muted mb-1 mt-3">My Contacts</p>
+                            <ul class="menu-list list-unstyled lh-lg">
+                                <li>
+                                    <a class="nav-link d-flex align-items-center gap-2 active" href="#">
+                                        <i class="opacity-50 bi bi-person-vcard"></i> All
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                        <i class="opacity-50 bi bi-person"></i> Personal
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                        <i class="opacity-50 bi bi-person-gear"></i> Work
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                        <i class="opacity-50 bi bi-person-workspace"></i> Office
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                        <i class="opacity-50 bi bi-star"></i> Family
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                        <i class="opacity-50 bi bi-people"></i> Friends
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                        <i class="opacity-50 bi bi-trash"></i> Trash
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div class="body-content py-2 py-lg-4 p-lg-4 flex-grow-1">
+                <!-- page header, Breadcrumb and page action btn -->
+                <div class="page-header d-flex flex-wrap justify-content-between align-items-center mb-3">
+                    <div class="d-inline-flex align-items-start gap-2">
+                        <button class="btn p-0 btn-link btn-navbar-collapse d-none d-lg-block" type="button"><i class="bi bi-arrow-left-circle-fill"></i></button>
+                        <div>
+                            <h1 class="fs-5 section-title mb-0">My Contact</h1>
+                            <h2 class="small text-muted fw-normal">Welcome back to DashQ workspace.</h2>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-1 align-items-center flex-fill flex-sm-grow-0 border border-secondary-subtle rounded-pill px-2 mt-2 mt-md-0">
+                        <input class="form-control fs-14 border-0 bg-transparent rounded-pill js-daterange focus-ring-none" type="text" name="daterange" aria-label="Date Range Filter">
+                        <div class="vr"></div>
+                        <div class="d-flex gap-1">
+                            <button class="btn fs-14 btn-link px-2 btn-ripple" aria-label="Share with"><i class="bi bi-share"></i></button>
+                            <button class="btn fs-14 btn-link px-2 btn-ripple" aria-label="PDF Download"><i class="bi bi-filetype-pdf"></i></button>
+                            <button class="btn fs-14 btn-link px-2 btn-ripple btn-fullscreen-main d-none d-sm-inline-block" data-bs-toggle="tooltip" data-bs-title="Main App Body Fullscreen" aria-label="Main App Body Fullscreen"><i class="bi bi-fullscreen"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <ul class="list-unstyled row g-3 g-lg-2 mb-3">
+                    <li class="col-md-12 col-sm-6">
+                        <article class="card contact-card p-3 p-lg-4 rounded-4 d-flex gap-2 gap-md-4 flex-column flex-md-row text-center text-md-start align-items-center align-items-md-start mt-0">
+                            <img class="avatar avatar-lg rounded-4 border border-2 border-white" src="../assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar-1">
+                            <div class="contact-main d-flex flex-column gap-2 gap-md-0 flex-grow-1 align-items-center align-items-md-start">
+                                <h6 class="contact-name">Alex Morgan</h6>
+                                <p class="contact-role-line mb-0 small">Product Designer · Dropbox — Warszawa</p>
+                                <span class="contact-social-inline small"><i class="bi bi-envelope"></i> email-id@example.com</span>
+                            </div>
+                            <div class="contact-tags flex-wrap gap-1 my-2 my-md-0 col-md-2">
+                                <p class="fs-12 mb-2">Tag:</p>
+                                <span class="badge rounded-pill bg-primary-subtle text-primary">Work</span>
+                                <span class="badge rounded-pill bg-success-subtle text-success">Personal</span>
+                            </div>
+                            <div class="flex-wrap gap-0">
+                                <p class="fs-12 mb-1">Action:</p>
+                                <div class="d-flex gap-1">
+                                    <button class="btn btn-ripple" aria-label="Send a email"><i class="bi bi-envelope"></i></button>
+                                    <button class="btn btn-ripple" aria-label="Chat" data-bs-toggle="offcanvas" data-bs-target="#chat_drawer" aria-controls="chat_drawer"><i class="bi bi-chat"></i></button>
+                                    <button class="btn btn-ripple" aria-label="View" data-bs-toggle="modal" data-bs-target="#contactModal" aria-controls="contactModal"><i class="bi bi-eye"></i></button>
+                                    <button class="btn btn-ripple" aria-label="Delete"><i class="bi bi-trash3"></i></button>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                    <li class="col-md-12 col-sm-6">
+                        <article class="card contact-card p-3 p-lg-4 rounded-4 d-flex gap-2 gap-md-4 flex-column flex-md-row text-center text-md-start align-items-center align-items-md-start mt-0">
+                            <img class="avatar avatar-lg rounded-4 border border-2 border-white" src="../assets/images/avatar/avatar-2.png" loading="lazy" alt="avatar-2">
+                            <div class="contact-main d-flex flex-column gap-2 gap-md-0 flex-grow-1 align-items-center align-items-md-start">
+                                <h6 class="contact-name">Lena Kowalski</h6>
+                                <p class="contact-role-line mb-0 small">UX Designer · Freelance — Wroclaw</p>
+                                <span class="contact-social-inline small"><i class="bi bi-envelope"></i> email-id@example.com</span>
+                            </div>
+                            <div class="contact-tags flex-wrap gap-1 my-2 my-md-0 col-md-2">
+                                <p class="fs-12 mb-2">Tag:</p>
+                                <span class="badge rounded-pill bg-primary-subtle text-primary">Work</span>
+                                <span class="badge rounded-pill bg-success-subtle text-success">Personal</span>
+                            </div>
+                            <div class="flex-wrap gap-0">
+                                <p class="fs-12 mb-1">Action:</p>
+                                <div class="d-flex gap-1">
+                                    <button class="btn btn-ripple" aria-label="Send a email"><i class="bi bi-envelope"></i></button>
+                                    <button class="btn btn-ripple" aria-label="Chat" data-bs-toggle="offcanvas" data-bs-target="#chat_drawer" aria-controls="chat_drawer"><i class="bi bi-chat"></i></button>
+                                    <button class="btn btn-ripple" aria-label="View" data-bs-toggle="modal" data-bs-target="#contactModal" aria-controls="contactModal"><i class="bi bi-eye"></i></button>
+                                    <button class="btn btn-ripple" aria-label="Delete"><i class="bi bi-trash3"></i></button>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                    <li class="col-md-12 col-sm-6">
+                        <article class="card contact-card p-3 p-lg-4 rounded-4 d-flex gap-2 gap-md-4 flex-column flex-md-row text-center text-md-start align-items-center align-items-md-start mt-0">
+                            <img class="avatar avatar-lg rounded-4 border border-2 border-white" src="../assets/images/avatar/avatar-3.png" loading="lazy" alt="avatar-3">
+                            <div class="contact-main d-flex flex-column gap-2 gap-md-0 flex-grow-1 align-items-center align-items-md-start">
+                                <h6 class="contact-name">Samir Patel</h6>
+                                <p class="contact-role-line mb-0 small">Product Designer · Dropbox — Warszawa</p>
+                                <span class="contact-social-inline small"><i class="bi bi-envelope"></i> email-id@example.com</span>
+                            </div>
+                            <div class="contact-tags flex-wrap gap-1 my-2 my-md-0 col-md-2">
+                                <p class="fs-12 mb-2">Tag:</p>
+                                <span class="badge rounded-pill bg-success-subtle text-success">Friends</span>
+                                <span class="badge rounded-pill bg-success-subtle text-success">Personal</span>
+                            </div>
+                            <div class="flex-wrap gap-0">
+                                <p class="fs-12 mb-1">Action:</p>
+                                <div class="d-flex gap-1">
+                                    <button class="btn btn-ripple" aria-label="Send a email"><i class="bi bi-envelope"></i></button>
+                                    <button class="btn btn-ripple" aria-label="Chat" data-bs-toggle="offcanvas" data-bs-target="#chat_drawer" aria-controls="chat_drawer"><i class="bi bi-chat"></i></button>
+                                    <button class="btn btn-ripple" aria-label="View" data-bs-toggle="modal" data-bs-target="#contactModal" aria-controls="contactModal"><i class="bi bi-eye"></i></button>
+                                    <button class="btn btn-ripple" aria-label="Delete"><i class="bi bi-trash3"></i></button>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                    <li class="col-md-12 col-sm-6">
+                        <article class="card contact-card p-3 p-lg-4 rounded-4 d-flex gap-2 gap-md-4 flex-column flex-md-row text-center text-md-start align-items-center align-items-md-start mt-0">
+                            <img class="avatar avatar-lg rounded-4 border border-2 border-white" src="../assets/images/avatar/avatar-4.png" loading="lazy" alt="avatar-4">
+                            <div class="contact-main d-flex flex-column gap-2 gap-md-0 flex-grow-1 align-items-center align-items-md-start">
+                                <h6 class="contact-name">Maria Lopez</h6>
+                                <p class="contact-role-line mb-0 small">Product Designer · Dropbox — Warszawa</p>
+                                <span class="contact-social-inline small"><i class="bi bi-envelope"></i> email-id@example.com</span>
+                            </div>
+                            <div class="contact-tags flex-wrap gap-1 my-2 my-md-0 col-md-2">
+                                <p class="fs-12 mb-2">Tag:</p>
+                                <span class="badge rounded-pill bg-danger-subtle text-danger">Family</span>
+                            </div>
+                            <div class="flex-wrap gap-0">
+                                <p class="fs-12 mb-1">Action:</p>
+                                <div class="d-flex gap-1">
+                                    <button class="btn btn-ripple" aria-label="Send a email"><i class="bi bi-envelope"></i></button>
+                                    <button class="btn btn-ripple" aria-label="Chat" data-bs-toggle="offcanvas" data-bs-target="#chat_drawer" aria-controls="chat_drawer"><i class="bi bi-chat"></i></button>
+                                    <button class="btn btn-ripple" aria-label="View" data-bs-toggle="modal" data-bs-target="#contactModal" aria-controls="contactModal"><i class="bi bi-eye"></i></button>
+                                    <button class="btn btn-ripple" aria-label="Delete"><i class="bi bi-trash3"></i></button>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                    <li class="col-md-12 col-sm-6">
+                        <article class="card contact-card p-3 p-lg-4 rounded-4 d-flex gap-2 gap-md-4 flex-column flex-md-row text-center text-md-start align-items-center align-items-md-start mt-0">
+                            <img class="avatar avatar-lg rounded-4 border border-2 border-white" src="../assets/images/avatar/avatar-5.png" loading="lazy" alt="avatar-5">
+                            <div class="contact-main d-flex flex-column gap-2 gap-md-0 flex-grow-1 align-items-center align-items-md-start">
+                                <h6 class="contact-name">Rahul Sharma</h6>
+                                <p class="contact-role-line mb-0 small">Product Designer · Dropbox — Warszawa</p>
+                                <span class="contact-social-inline small"><i class="bi bi-envelope"></i> email-id@example.com</span>
+                            </div>
+                            <div class="contact-tags flex-wrap gap-1 my-2 my-md-0 col-md-2">
+                                <p class="fs-12 mb-2">Tag:</p>
+                                <span class="badge rounded-pill bg-primary-subtle text-primary">Work</span>
+                                <span class="badge rounded-pill bg-warning-subtle text-warning">Office</span>
+                            </div>
+                            <div class="flex-wrap gap-0">
+                                <p class="fs-12 mb-1">Action:</p>
+                                <div class="d-flex gap-1">
+                                    <button class="btn btn-ripple" aria-label="Send a email"><i class="bi bi-envelope"></i></button>
+                                    <button class="btn btn-ripple" aria-label="Chat" data-bs-toggle="offcanvas" data-bs-target="#chat_drawer" aria-controls="chat_drawer"><i class="bi bi-chat"></i></button>
+                                    <button class="btn btn-ripple" aria-label="View" data-bs-toggle="modal" data-bs-target="#contactModal" aria-controls="contactModal"><i class="bi bi-eye"></i></button>
+                                    <button class="btn btn-ripple" aria-label="Delete"><i class="bi bi-trash3"></i></button>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                    <li class="col-md-12 col-sm-6">
+                        <article class="card contact-card p-3 p-lg-4 rounded-4 d-flex gap-2 gap-md-4 flex-column flex-md-row text-center text-md-start align-items-center align-items-md-start mt-0">
+                            <img class="avatar avatar-lg rounded-4 border border-2 border-white" src="../assets/images/avatar/avatar-6.png" loading="lazy" alt="avatar-6">
+                            <div class="contact-main d-flex flex-column gap-2 gap-md-0 flex-grow-1 align-items-center align-items-md-start">
+                                <h6 class="contact-name">Emily Chen</h6>
+                                <p class="contact-role-line mb-0 small">Illustrator · Freelance — Shanghai</p>
+                                <span class="contact-social-inline small"><i class="bi bi-envelope"></i> email-id@example.com</span>
+                            </div>
+                            <div class="contact-tags flex-wrap gap-1 my-2 my-md-0 col-md-2">
+                                <p class="fs-12 mb-2">Tag:</p>
+                                <span class="badge rounded-pill bg-danger-subtle text-danger">Family</span>
+                            </div>
+                            <div class="flex-wrap gap-0">
+                                <p class="fs-12 mb-1">Action:</p>
+                                <div class="d-flex gap-1">
+                                    <button class="btn btn-ripple" aria-label="Send a email"><i class="bi bi-envelope"></i></button>
+                                    <button class="btn btn-ripple" aria-label="Chat" data-bs-toggle="offcanvas" data-bs-target="#chat_drawer" aria-controls="chat_drawer"><i class="bi bi-chat"></i></button>
+                                    <button class="btn btn-ripple" aria-label="View" data-bs-toggle="modal" data-bs-target="#contactModal" aria-controls="contactModal"><i class="bi bi-eye"></i></button>
+                                    <button class="btn btn-ripple" aria-label="Delete"><i class="bi bi-trash3"></i></button>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                    <li class="col-md-12 col-sm-6">
+                        <article class="card contact-card p-3 p-lg-4 rounded-4 d-flex gap-2 gap-md-4 flex-column flex-md-row text-center text-md-start align-items-center align-items-md-start mt-0">
+                            <img class="avatar avatar-lg rounded-4 border border-2 border-white" src="../assets/images/avatar/avatar-8.png" loading="lazy" alt="avatar-8">
+                            <div class="contact-main d-flex flex-column gap-2 gap-md-0 flex-grow-1 align-items-center align-items-md-start">
+                                <h6 class="contact-name">Daniel Rossi</h6>
+                                <p class="contact-role-line mb-0 small">Marketing Lead · Bright Labs — Rome</p>
+                                <span class="contact-social-inline small"><i class="bi bi-envelope"></i> alex.morgan@example.com</span>
+                            </div>
+                            <div class="contact-tags flex-wrap gap-1 my-2 my-md-0 col-md-2">
+                                <p class="fs-12 mb-2">Tag:</p>
+                                <span class="badge rounded-pill bg-primary-subtle text-primary">Work</span>
+                                <span class="badge rounded-pill bg-warning-subtle text-warning">Office</span>
+                            </div>
+                            <div class="flex-wrap gap-0">
+                                <p class="fs-12 mb-1">Action:</p>
+                                <div class="d-flex gap-1">
+                                    <button class="btn btn-ripple" aria-label="Send a email"><i class="bi bi-envelope"></i></button>
+                                    <button class="btn btn-ripple" aria-label="Chat" data-bs-toggle="offcanvas" data-bs-target="#chat_drawer" aria-controls="chat_drawer"><i class="bi bi-chat"></i></button>
+                                    <button class="btn btn-ripple" aria-label="View" data-bs-toggle="modal" data-bs-target="#contactModal" aria-controls="contactModal"><i class="bi bi-eye"></i></button>
+                                    <button class="btn btn-ripple" aria-label="Delete"><i class="bi bi-trash3"></i></button>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                    <li class="col-md-12 col-sm-6">
+                        <article class="card contact-card p-3 p-lg-4 rounded-4 d-flex gap-2 gap-md-4 flex-column flex-md-row text-center text-md-start align-items-center align-items-md-start mt-0">
+                            <img class="avatar avatar-lg rounded-4 border border-2 border-white" src="../assets/images/avatar/avatar-9.png" loading="lazy" alt="avatar-9">
+                            <div class="contact-main d-flex flex-column gap-2 gap-md-0 flex-grow-1 align-items-center align-items-md-start">
+                                <h6 class="contact-name">Omar Aziz</h6>
+                                <p class="contact-role-line mb-0 small">Data Analyst · Insightly — Dubai</p>
+                                <span class="contact-social-inline small"><i class="bi bi-envelope"></i> alex.morgan@example.com</span>
+                            </div>
+                            <div class="contact-tags flex-wrap gap-1 my-2 my-md-0 col-md-2">
+                                <p class="fs-12 mb-2">Tag:</p>
+                                <span class="badge rounded-pill bg-primary-subtle text-primary">Work</span>
+                                <span class="badge rounded-pill bg-success-subtle text-success">Friends</span>
+                            </div>
+                            <div class="flex-wrap gap-0">
+                                <p class="fs-12 mb-1">Action:</p>
+                                <div class="d-flex gap-1">
+                                    <button class="btn btn-ripple" aria-label="Send a email"><i class="bi bi-envelope"></i></button>
+                                    <button class="btn btn-ripple" aria-label="Chat" data-bs-toggle="offcanvas" data-bs-target="#chat_drawer" aria-controls="chat_drawer"><i class="bi bi-chat"></i></button>
+                                    <button class="btn btn-ripple" aria-label="View" data-bs-toggle="modal" data-bs-target="#contactModal" aria-controls="contactModal"><i class="bi bi-eye"></i></button>
+                                    <button class="btn btn-ripple" aria-label="Delete"><i class="bi bi-trash3"></i></button>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Menu toggle fix view only small device -->
+        <button class="bg-primary bottom-0 d-lg-none end-0 fs-2 mb-5 me-3 navbar-toggler p-2 position-fixed rounded-circle text-white z-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBodyMenu" aria-controls="offcanvasMenu" aria-label="Toggle navigation">
+            <i class="bi bi-list"></i>
+        </button>
+    </div>
+</main>

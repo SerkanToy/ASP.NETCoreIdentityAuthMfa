@@ -1,0 +1,172 @@
+﻿@page "~/videocall"
+@model NETCoreIdentityMFA.Ui.Pages.VideoCall.VideoCallModel
+@{
+    ViewData["ccs"] = "body-layout video-call";
+}
+
+@section videocall {
+    <link rel="stylesheet" href="~/assets/css/video-call.css" />
+}
+
+@section Scripts {
+
+}
+
+<main class="app-body border">
+    <div class="container-fluid p-lg-0">
+        <div class="d-flex flex-row">
+            <div class="body-content py-2 py-lg-4 p-lg-4 flex-grow-1">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-lg-flex gap-3 align-items-center small d-none">
+                        <a href="#" class="text-decoration-none fw-bold"><i class="bi bi-plus-circle-fill me-1"></i>Add user to the call</a>
+                        <div><i class="bi bi-people-fill me-1"></i>Invited to the call: <span class="badge bg-success-subtle border border-success-subtle text-success-emphasis rounded-pill ms-1">6</span></div>
+                        <div><i class="bi bi-person-x-fill me-1"></i>Absent people: <span class="badge bg-danger-subtle border border-danger-subtle text-danger-emphasis rounded-pill ms-1">2</span></div>
+                    </div>
+                    <button class="btn p-0 btn-link rightside btn-navbar-collapse d-none d-xl-block" type="button"><i class="bi bi-arrow-left-circle-fill"></i></button>
+                </div>
+                <div class="video-container rounded-5 border border-white">
+                    <div class="position-absolute p-4 d-md-flex align-items-center gap-3 text-white d-none">
+                        <img class="avatar avatar-md border border-2 border-white" src="../assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar">
+                        <div>
+                            <small class="opacity-75">Created by</small>
+                            <h5 class="fw-bold mb-0">Advait Patel</h5>
+                        </div>
+                    </div>
+                    <!-- Call recording -->
+                    <div class="position-absolute top-0 start-50 translate-middle-x mt-4">
+                        <div class="glass px-3 py-2 rounded-4 d-flex align-items-center">
+                            <i class="bi bi-record-fill text-danger me-1"></i>06:22
+                        </div>
+                    </div>
+                    <!-- Invited User -->
+                    <div class="side-thumbs position-absolute d-flex flex-column gap-3 end-0 top-0 me-3 mt-3 me-xl-4 mt-xl-4">
+                        <a href="#" class="avatar avatar-lg rounded-4 border border-white">
+                            <img class="img-fluid" src="~/assets/images/avatar/avatar-13.png" loading="lazy" alt="video avatar">
+                        </a>
+                        <a href="#" class="avatar avatar-lg rounded-4 border border-white">
+                            <img class="img-fluid" src="~/assets/images/avatar/avatar-12.png" loading="lazy" alt="video avatar">
+                        </a>
+                        <a href="#" class="avatar avatar-lg rounded-4 border border-white">
+                            <img class="img-fluid" src="~/assets/images/avatar/avatar-11.png" loading="lazy" alt="video avatar">
+                        </a>
+                        <a href="#" class="avatar avatar-lg rounded-4 border border-white">
+                            <img class="img-fluid" src="~/assets/images/avatar/avatar-10.png" loading="lazy" alt="video avatar">
+                        </a>
+                    </div>
+                    <div class="position-absolute bottom-0 start-0 m-4 glass d-md-flex flex-column align-items-center py-4 px-3 rounded-pill d-none">
+                        <input type="range" class="form-range" style="writing-mode: vertical-lr; height: 150px; width: 6px;">
+                        <a href="#" class="color-inherit"><i class="bi bi-volume-up-fill mt-3"></i></a>
+                    </div>
+                    <!-- btn action bar -->
+                    <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4 d-flex gap-2">
+                        <button class="control-btn btn-ripple glass btn-fullscreen-main"><i class="bi bi-arrows-fullscreen"></i></button>
+                        <button class="control-btn btn-ripple glass"><i class="bi bi-mic-mute-fill"></i></button>
+                        <button class="control-btn btn-ripple btn-hangup"><i class="bi bi-telephone-x-fill"></i></button>
+                        <button class="control-btn btn-ripple glass"><i class="bi bi-camera-video-fill"></i></button>
+                        <button class="control-btn btn-ripple glass"><i class="bi bi-gear-fill"></i></button>
+                    </div>
+                </div>
+                <!-- wave-container -->
+                <div class="d-flex align-items-center gap-2 small">
+                    <i class="bi bi-soundwave"></i>
+                    <span>Thanks for sending all those completed transcripts through...</span>
+                </div>
+            </div>
+            <!-- user right -->
+            <nav class="navbar navbar-expand-xl p-0 bg-body-tertiary">
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasBodyMenu">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title">Group Chat</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div class="body-sidebar p-0 chat-card d-flex flex-column border-start">
+                            <!-- begin::Header -->
+                            <div class="chat-header d-flex align-items-center justify-content-between border-bottom p-3">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="avatar avatar-text bg-primary">DG</div>
+                                    <div class="lh-1">
+                                        <p class="chat-title mb-0 fw-bold">Design Team</p>
+                                        <span class="chat-subtitle text-muted fs-12">Alex is typing…</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center avatar-group ps-2">
+                                    <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar-1">
+                                    <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-2.png" loading="lazy" alt="avatar-2">
+                                    <div class="avatar avatar-sm border border-2 border-white d-flex align-items-center justify-content-center bg-success">
+                                        <span class="avatar-text" style="font-size:.7rem;">+5</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Body -->
+                            <div class="chat-body overflow-y-auto p-3">
+                                <!-- Incoming message 1 -->
+                                <div class="d-flex align-items-start gap-2 mb-3">
+                                    <img class="avatar avatar-sm" src="~/assets/images/avatar/avatar-3.png" loading="lazy" alt="avatar-3">
+                                    <div>
+                                        <div class="msg-bubble msg-in border mb-1">
+                                            Good morning!
+                                        </div>
+                                        <div class="msg-bubble msg-in border">
+                                            The new deployment went live. Can everyone confirm access?
+                                        </div>
+                                        <span class="msg-meta text-muted mt-1">09:12</span>
+                                    </div>
+                                </div>
+                                <!-- Outgoing message -->
+                                <div class="d-flex align-items-end flex-row-reverse gap-2 mb-4">
+                                    <div class="text-end">
+                                        <div class="msg-bubble msg-out ms-auto">
+                                            Yes, logging in now.
+                                        </div>
+                                        <span class="msg-meta text-muted mt-1">
+                                            09:14
+                                            <span class="ms-1 text-success">✔✔</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <!-- Incoming message 2 -->
+                                <div class="d-flex align-items-start gap-2 mb-3">
+                                    <img class="avatar avatar-sm" src="~/assets/images/avatar/avatar-5.png" loading="lazy" alt="avatar-5">
+                                    <div>
+                                        <div class="msg-bubble msg-in border">
+                                            I can access it. Some pages feel faster than before.
+                                        </div>
+                                        <span class="msg-meta text-muted mt-1">09:15</span>
+                                    </div>
+                                </div>
+                                <!-- Incoming message 3 -->
+                                <div class="d-flex align-items-start gap-2 mb-3">
+                                    <img class="avatar avatar-sm" src="~/assets/images/avatar/avatar-2.png" loading="lazy" alt="avatar-2">
+                                    <div>
+                                        <div class="msg-bubble msg-in border">
+                                            Great! Please check billing and analytics modules as well.
+                                        </div>
+                                        <span class="msg-meta text-muted mt-1">09:16</span>
+                                    </div>
+                                </div>
+                                <!-- Outgoing message 2 -->
+                                <div class="d-flex align-items-end flex-row-reverse gap-2 mb-2">
+                                    <div class="text-end">
+                                        <div class="msg-bubble msg-out ms-auto">
+                                            Billing looks fine. I'll test analytics next.
+                                        </div>
+                                        <span class="msg-meta text-muted mt-1">09:17</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- begin::Footer -->
+                            <div class="chat-footer mt-auto p-3 border-top">
+                                <input type="text" class="form-control rounded-pill" placeholder="Write a message…">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- Menu toggle fix view only small device -->
+        <button class="bg-primary bottom-0 d-xl-none end-0 fs-2 mb-5 me-3 navbar-toggler p-2 position-fixed rounded-circle text-white z-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBodyMenu" aria-controls="offcanvasMenu" aria-label="Toggle navigation">
+            <i class="bi bi-list"></i>
+        </button>
+    </div>
+</main>

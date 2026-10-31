@@ -13,29 +13,37 @@
                 <h2 class="h6 text-muted mb-0">Get started building beautiful feeds today.</h2>
             </div>
             <div class="d-flex flex-column flex-sm-row gap-2 mb-3">
-                <button class="btn btn-outline-secondary btn-ripple w-100"><img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="" class="me-1" width="20">Google</button>
-                <button class="btn btn-outline-secondary btn-ripple w-100"><i class="bi bi-github me-1"></i>Github</button>
+                <button class="btn btn-outline-secondary btn-ripple w-100">
+                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="" class="me-1" width="20">
+                    Google
+                </button>
+                <button class="btn btn-outline-secondary btn-ripple w-100">
+                    <i class="bi bi-github me-1"></i>
+                    Github
+                </button>
             </div>
             <div class="mb-3">
                 <div class="divider-text">or</div>
             </div>
-            <form>
+            <form autocomplete="off" asp-page="index" asp-page-handler="LoginData" asp-route-ReturnUrl='@RouteData.Values["ReturnUrl"]' method="post">
                 <div class="mb-4">
-                    <label for="email" class="form-label small text-muted mb-1">Email</label>
-                    <input type="email" id="email" class="form-control" placeholder="you@example.com">
+                    <label asp-for="Credential.UserName" class="form-label small text-muted mb-1">Email</label>
+                    <input type="email" asp-for="Credential.UserName" class="form-control" placeholder="you@example.com">
+                    <span class="text-danger" asp-validation-for="Credential.UserName"></span>
                 </div>
                 <div class="mb-4">
                     <div class="d-flex justify-content-between align-items-center mb-1">
                         <label for="password" class="form-label small text-muted mb-0">Password</label>
                         <a href="auth-forgot-password.html" class="small text-primary text-decoration-none">Forgot password?</a>
                     </div>
-                    <input type="password" id="password" class="form-control" placeholder="At least 8 characters">
+                    <input type="password" asp-for="Credential.Password" class="form-control" placeholder="At least 8 characters">
+                    <span class="text-danger" asp-validation-for="Credential.Password"></span>
                 </div>
                 <div class="d-grid mb-3">
-                    <a href="index.html" title="" class="btn btn-primary">Login</a>
+                    <button type="submit" title="" class="btn btn-primary">Login</button>
                 </div>
             </form>
-            <p class="small text-muted mt-3 mb-0">Don't have an account? <a href="/register/register" class="text-primary text-decoration-none fw-semibold">Register</a></p>
+            <p class="small text-muted mt-3 mb-0">Don't have an account? <a asp-page="register" class="text-primary text-decoration-none fw-semibold">Register</a></p>
         </div>
     </div>
 </div>

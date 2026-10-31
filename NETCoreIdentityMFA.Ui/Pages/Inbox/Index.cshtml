@@ -2,12 +2,18 @@
 @model NETCoreIdentityMFA.Ui.Pages.Inbox.IndexModel
 @{
     ViewData["Title"] = "Inbox Page";
+    ViewData["ccs"] = "body-layout sm inbox";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-@section inbox  {
+@section Css  {
+
     <link rel="stylesheet" href="~/assets/vendor/tagsinput/bootstrap-tagsinput.min.css" />
     <link rel="stylesheet" href="~/assets/css/inbox.css" />
+}
+
+@section Scripts {
+    <script src="~/assets/js/apps/app-inbox.js"></script>
 }
 
 <main class="app-body border">

@@ -1,0 +1,144 @@
+﻿@page "~/aichat"
+@model NETCoreIdentityMFA.Ui.Pages.AiChat.AiChatModel
+@{
+    ViewData["Title"] = "AiChat Page";
+    //Layout = "~/Pages/Shared/_LoginLayout.cshtml";
+}
+
+<main class="app-body border">
+    <div class="container-fluid">
+        <div class="d-flex flex-row">
+            <!-- Body Sidebar menu -->
+            <nav class="navbar navbar-expand-lg p-0">
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasBodyMenu">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title">My Chat</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div class="body-sidebar p-3 d-flex flex-column card">
+                            <div class="d-flex flex-column gap-3 mb-3">
+                                <div class="position-relative">
+                                    <img class="avatar avatar-xl border border-2 shadow-sm" src="../assets/images/avatar/avatar-1.png" loading="lazy" alt="User Avatar">
+                                    <span class="position-absolute bottom-0 ms-2 start-0 bg-success rounded-circle border border-white" style="width:12px;height:12px;"></span>
+                                </div>
+                                <div>
+                                    <h6 class="fw-semibold mb-0">Advait Patel</h6>
+                                    <span class="text-muted small">advait.patel@gmail.com</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary rounded-3 w-100 d-flex align-items-center justify-content-center gap-2 btn-ripple"><i class="bi bi-chat"></i>New Chat</button>
+                            <p class="small text-muted mb-1 mt-3">Your Chat</p>
+                            <ul class="menu-list lh-lg ps-3 small">
+                                <li><a class="nav-link text-truncate mb-2" href="#" aria-label="chat subject">New Admin Dashboard Layouts</a></li>
+                                <li><a class="nav-link text-truncate mb-2" href="#" aria-label="chat subject">Healthcare CRM Solutions</a></li>
+                                <li><a class="nav-link text-truncate mb-2" href="#" aria-label="chat subject">Content Writer Hiring Post</a></li>
+                                <li><a class="nav-link text-truncate mb-2" href="#" aria-label="chat subject">FinTech Admin Panel Pages</a></li>
+                                <li><a class="nav-link text-truncate mb-2" href="#" aria-label="chat subject">Education Admin Dashboard Layout</a></li>
+                                <li><a class="nav-link text-truncate mb-2" href="#" aria-label="chat subject">Indoor Plant Arrangement Ideas</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div class="body-content py-2 py-lg-4 p-lg-4 flex-grow-1">
+                <!-- page header, Breadcrumb and page action btn -->
+                <div class="page-header d-flex flex-wrap justify-content-between align-items-center mb-3">
+                    <div class="d-flex align-items-center gap-2">
+                        <button class="btn p-0 btn-link btn-navbar-collapse d-none d-lg-block" type="button"><i class="bi bi-arrow-left-circle-fill"></i></button>
+                        <div class="dropdown">
+                            <button class="btn btn-sm border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown">ChatGPT</button>
+                            <div class="dropdown-menu rounded-4 shadow-sm p-0 overflow-hidden" style="width: 300px;">
+                                <!-- Plan 1 -->
+                                <div class="plan-item d-flex align-items-center justify-content-between p-3">
+                                    <div class="d-flex gap-3 align-items-start">
+                                        <div class="plan-icon">✦</div>
+                                        <div>
+                                            <p class="mb-0 fw-semibold fs-14">ChatGPT Go</p>
+                                            <span class="plan-desc fs-12">Our smartest model & more</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-secondary rounded-pill fs-12">Upgrade</button>
+                                </div>
+                                <!-- Plan 2 (Active) -->
+                                <div class="plan-item d-flex align-items-center justify-content-between  p-3 bg-light mt-1">
+                                    <div class="d-flex gap-3 align-items-start">
+                                        <div class="plan-icon">✖</div>
+                                        <div>
+                                            <p class="mb-0 fw-semibold fs-14">ChatGPT</p>
+                                            <span class="plan-desc fs-12">Great for everyday tasks</span>
+                                        </div>
+                                    </div>
+                                    <i class="bi bi-check-lg text-success fs-4"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-1 align-items-center flex-fill flex-sm-grow-0 border border-secondary-subtle rounded-pill px-2 mt-2 mt-md-0">
+                        <input class="form-control fs-14 border-0 bg-transparent rounded-pill js-daterange focus-ring-none" type="text" name="daterange" aria-label="Date Range Filter">
+                        <div class="vr"></div>
+                        <div class="d-flex gap-1">
+                            <button class="btn fs-14 btn-link px-2 btn-ripple" aria-label="Share with"><i class="bi bi-share"></i></button>
+                            <button class="btn fs-14 btn-link px-2 btn-ripple" aria-label="PDF Download"><i class="bi bi-filetype-pdf"></i></button>
+                            <button class="btn fs-14 btn-link px-2 btn-ripple btn-fullscreen-main d-none d-sm-inline-block" data-bs-toggle="tooltip" data-bs-title="Main App Body Fullscreen" aria-label="Main App Body Fullscreen"><i class="bi bi-fullscreen"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- AI chat  -->
+                <div class="mx-auto d-flex flex-column mt-lg-5" style="max-width:800px;">
+                    <!-- HERO -->
+                    <div class="text-center">
+                        <h3 class="h2 fw-bold">
+                            Hi there, <span class="text-gradient">Daniel</span><br>
+                            <span class="text-gradient">What would you like to know?</span>
+                        </h3>
+                        <p class="text-muted mt-2 small">Use one of the most common prompts below or use your own to begin</p>
+                    </div>
+                    <!-- PROMPT SUGGESTIONS -->
+                    <div class="row g-xl-4 g-lg-3 g-2 justify-content-center mb-3 row-deck">
+                        <div class="col-sm-4">
+                            <a href="#" class="card rounded-4 p-3 mt-0 text-decoration-none bg-primary-subtle" aria-label="chat prompt suggestions">
+                                <p class="small mb-0 mb-lg-2">Write a to-do list for a personal project or task</p>
+                                <i class="bi d-none d-lg-inline-block fs-5 mt-auto bi-person"></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-4">
+                            <a href="#" class="card rounded-4 p-3 mt-0 text-decoration-none bg-warning-subtle" aria-label="chat prompt suggestions">
+                                <p class="small mb-0 mb-lg-2">Generate an email to reply to a job offer</p>
+                                <i class="bi d-none d-lg-inline-block fs-5 mt-auto bi-envelope"></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-4">
+                            <a href="#" class="card rounded-4 p-3 mt-0 text-decoration-none bg-danger-subtle" aria-label="chat prompt suggestions">
+                                <p class="small mb-0 mb-lg-2">Summarise this article or text for me in one paragraph</p>
+                                <i class="bi d-none d-lg-inline-block fs-5 mt-auto bi-chat-square-text"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- REFRESH -->
+                    <div class="text-center my-lg-5 my-3">
+                        <a href="#" class="text-muted small text-decoration-none border rounded-pill px-3 py-2"><i class="bi bi-arrow-repeat"></i> Refresh Prompts</a>
+                    </div>
+                    <!-- INPUT AREA -->
+                    <div class="chat-box card rounded-4 p-3 mt-auto">
+                        <textarea class="form-control mb-3" rows="2" name="Ask whatever you want" placeholder="Ask whatever you want..."></textarea>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-3 text-muted small">
+                                <a href="#" class="text-decoration-none" aria-label="Add Attachment"><i class="bi bi-paperclip"></i> Add Attachment</a>
+                                <a href="#" class="text-decoration-none" aria-label="Use Image"><i class="bi bi-image"></i> Use Image</a>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="small text-muted">0/1000</span>
+                                <button class="btn bg-primary avatar avatar-text"><i class="bi bi-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Menu toggle fix view only small device -->
+        <button class="bg-primary bottom-0 d-lg-none end-0 fs-2 mb-5 me-3 navbar-toggler p-2 position-fixed rounded-circle text-white z-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBodyMenu" aria-controls="offcanvasMenu" aria-label="Toggle navigation">
+            <i class="bi bi-list"></i>
+        </button>
+    </div>
+</main>
