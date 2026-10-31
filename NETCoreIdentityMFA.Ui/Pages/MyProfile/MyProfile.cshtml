@@ -1,0 +1,1043 @@
+﻿@page "~/my-profile"
+@model NETCoreIdentityMFA.Ui.Pages.MyProfile.MyProfileModel
+@{
+    ViewData["Title"] = "My Profile Page";
+    ViewData["ccs"] = "";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@section Css {
+
+}
+
+@section Scripts {
+    <script src="~/assets/js/my-profile.js"></script>
+}
+
+<main class="app-body border">
+            <div class="user-profile">
+                <div class="user-cover-image overflow-hidden rounded-4 border-bottom app-border border-4" style="height: 180px; background: url('/assets/images/profile-cover-image.png') center/cover;"></div>
+                <div class="d-flex align-items-center justify-content-between gap-3 px-3 px-lg-4">
+                    <!-- user avatar -->
+                    <div style="margin-top: -60px;" class="avatar avatar-xxl border app-border border-5 overflow-visible position-relative shadow">
+                        <img src="~/assets/images/avatar/avatar-1.png" class="rounded-circle img-fluid" alt="user avatar">
+                        <svg class="border border-3 bottom-0 end-0 me-3 position-absolute rounded-circle" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="8" cy="8" r="8" fill="var(--bs-success)"/>
+                        </svg>
+                    </div>
+                    <div class="user-action d-flex flex-wrap align-items-center justify-content-end gap-1 gap-lg-2 mt-2 mt-lg-3">
+                        <div class="rounded-pill border px-2 py-1 bg-body">
+                            <div class="form-check form-switch mb-0 mx-1">
+                                <input class="form-check-input" type="checkbox" role="switch" id="Onlineformessages">
+                                <label class="form-check-label small" for="Onlineformessages">Online for messages</label>
+                            </div>
+                        </div>
+                        <a href="my-account.html" class="btn btn-sm btn-primary px-3 rounded-pill btn-ripple">Profile Setting</a>
+                    </div>
+                </div>
+                <div class="p-3 p-lg-4">
+                    <div class="row g-3">
+                        <div class="col-lg-6">
+                            <h3 class="fw-bold mb-0">Advait Patel</h3>
+                            <p class="mb-0">advait.patel@gmail.com</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="d-flex flex-wrap gap-3 gap-lg-4 justify-content-lg-end">
+                                <div class="d-flex align-items-center gap-3 border-start ps-3">
+                                    <i class="bi bi-briefcase fs-4"></i>
+                                    <div>
+                                        <h6 class="mb-0 small lh-1">10+ year job</h6>
+                                        <span class="fs-12">Experience</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center gap-3 border-start ps-3">
+                                    <i class="bi bi-trophy fs-4"></i>
+                                    <div>
+                                        <h6 class="mb-0 small lh-1">7 Certificate</h6>
+                                        <span class="fs-12">Achievement</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center gap-3 border-start ps-3">
+                                    <i class="bi bi-hand-thumbs-up fs-4"></i>
+                                    <div>
+                                        <h6 class="mb-0 small lh-1">3 Unternship</h6>
+                                        <span class="fs-12">Completion</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <span class="text-muted small">I specialize in guiding organizations through rebranding projects, improving their design systems, and strengthening their customer-facing communication. My focus is on creating visually consistent, scalable, and user-friendly brand experiences. <a href="#">More</a> </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- User tab -->
+                <ul class="flex-nowrap fs-4 gap-4 nav nav-underline overflow-x-auto px-3 px-lg-4 text-nowrap z-1 border-bottom tab-text-gradient" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link nav-link px-0 fw-bold bg-transparent active" data-bs-toggle="tab" data-bs-target="#user-tab-Profile" type="button" role="tab" aria-controls="user-tab-Profile" aria-selected="true">Home</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link nav-link px-0 fw-bold bg-transparent" data-bs-toggle="tab" data-bs-target="#user-tab-Post" type="button" role="tab" aria-controls="user-tab-Post" aria-selected="false">Profile</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link nav-link px-0 fw-bold bg-transparent" data-bs-toggle="tab" data-bs-target="#user-tab-Project" type="button" role="tab" aria-controls="user-tab-Project" aria-selected="false">Project</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link nav-link px-0 fw-bold bg-transparent" data-bs-toggle="tab" data-bs-target="#user-tab-Teams" type="button" role="tab" aria-controls="user-tab-Teams" aria-selected="false">Teams</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link nav-link px-0 fw-bold bg-transparent" data-bs-toggle="tab" data-bs-target="#user-tab-Activity" type="button" role="tab" aria-controls="user-tab-Activity" aria-selected="false">Activity</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link nav-link px-0 fw-bold bg-transparent" data-bs-toggle="tab" data-bs-target="#user-tab-Photos" type="button" role="tab" aria-controls="user-tab-Photos" aria-selected="false">Photos</button>
+                    </li>
+                </ul>
+                <div class="tab-content p-3 p-lg-4">
+                    <!-- Tab content:: Profile -->
+                    <div class="tab-pane fade show active" id="user-tab-Profile" role="tabpanel" aria-labelledby="user-tab-Profile" tabindex="0">
+                        <div class="row g-3">
+                            <div class="col-lg-4">
+                                <!-- About Me -->
+                                <div class="card rounded-4 mt-0 mb-3 overflow-auto">
+                                    <div class="card-body p-0">
+                                        <h6 class="mb-4 small text-uppercase p-4 pb-0">About Me</h6>
+                                        <table class="table table-sm table-hover border-bottom-none mb-0 w-100 small">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Age:</td>
+                                                    <td>38</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>City:</td>
+                                                    <td>Toronto</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>State:</td>
+                                                    <td>Ontario</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Country:</td>
+                                                    <td>Canada</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Postcode:</td>
+                                                    <td>M5V 2T6</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Phone:</td>
+                                                    <td>+1 (647) 892-1145</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- Community Badges -->
+                                <div class="card rounded-4 mt-0 mb-3">
+                                    <div class="card-body p-lg-4">
+                                        <h6 class="section-title mb-4 small text-uppercase">Community Badges</h6>
+                                        <div class="d-flex flex-column justify-content-start text-start gap-2">
+                                            <span class="text-primary"><i class="me-2 bi bi-patch-check-fill badge-icon"></i>Verified</span>
+                                            <span class="text-success"><i class="me-2 bi bi-award-fill badge-icon"></i>Contributor</span>
+                                            <span class="text-warning"><i class="me-2 bi bi-lightning-charge-fill badge-icon"></i>Top Rated</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Work Experience -->
+                                <div class="card rounded-4 mt-0 mb-3">
+                                    <div class="card-body p-lg-4">
+                                        <h6 class="section-title mb-4 small text-uppercase">Work Experience</h6>
+                                        <ul class="list-unstyled mb-0 gap-3 d-flex flex-column">
+                                            <li class="d-flex align-items-start gap-3">
+                                                <img class="avatar avatar" src="~/assets/images/brand-logos/brand-1.png" alt="brand logo 1">
+                                                <div class="flex-fill">
+                                                    <h6 class="mb-1 fw-bold">Brand Consultant - Hotels Inc.</h6>
+                                                    <small class="text-muted">2021 - Present</small>
+                                                    <p class="mb-0">Leading design & strategy for hospitality brands.</p>
+                                                </div>
+                                            </li>
+                                            <li class="d-flex align-items-start gap-3">
+                                                <img class="avatar avatar" src="~/assets/images/brand-logos/brand-2.png" alt="brand logo 2">
+                                                <div class="flex-fill">
+                                                    <h6 class="mb-1 fw-bold">UX Research Intern - WebStudio</h6>
+                                                    <small class="text-muted">2019 - 2020</small>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- My Skills -->
+                                <div class="card rounded-4 mt-0 mb-3">
+                                    <div class="card-body p-lg-4">
+                                        <h6 class="section-title mb-4 small text-uppercase">My Skills</h6>
+                                        <ul class="list-unstyled mb-0 d-flex flex-wrap gap-1 small">
+                                            <li class="d-flex px-2 py-1 rounded bg-primary-subtle">UX Research</li>
+                                            <li class="d-flex px-2 py-1 rounded bg-warning-subtle">Front-End</li>
+                                            <li class="d-flex px-2 py-1 rounded bg-danger-subtle">Mobile Design</li>
+                                            <li class="d-flex px-2 py-1 rounded bg-dark-subtle">Figma</li>
+                                            <li class="d-flex px-2 py-1 rounded bg-info-subtle">Logo Design</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <!-- Recent Activity Timeline -->
+                                <div class="card rounded-4 mt-0 mb-3">
+                                    <div class="card-body p-lg-4">
+                                        <h6 class="section-title mb-4 small text-uppercase"><i class="bi bi-activity me-2"></i> Recent Activity Timeline</h6>
+                                        <div class="d-flex mb-4">
+                                            <div class="me-3">
+                                                <span class="timeline-dot bg-primary"></span>
+                                                <span class="timeline-line"></span>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <div class="d-flex justify-content-between">
+                                                    <h6 class="fw-semibold">26 Invoices have been paid</h6>
+                                                    <span class="text-muted small">12 min ago</span>
+                                                </div>
+                                                <p class="text-muted mb-2">Invoices have been paid to the company</p>
+                                                <a href="#" class="btn btn-light border px-3 py-1 small">
+                                                    <i class="bi bi-file-earmark-pdf text-danger me-1"></i> invoices-dec.pdf
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex mb-4">
+                                            <div class="me-3">
+                                                <span class="timeline-dot bg-success"></span>
+                                                <span class="timeline-line"></span>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <div class="d-flex justify-content-between">
+                                                    <h6 class="fw-semibold">Client Meeting</h6>
+                                                    <span class="text-muted small">35 min ago</span>
+                                                </div>
+                                                <p class="text-muted mb-2">Project meeting with Mat @@11:57am</p>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="~/assets/images/avatar/avatar-3.png" class="avatar avatar-sm me-2" alt="avara">
+                                                    <div>
+                                                        <div class="fw-semibold small">Advait Patel (Client)</div>
+                                                        <div class="text-muted small">CEO of EdgeUI</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex mb-2">
+                                            <div class="me-3"><span class="timeline-dot bg-info"></span></div>
+                                            <div class="flex-grow-1">
+                                                <div class="d-flex justify-content-between">
+                                                    <h6 class="fw-semibold">Create a new project for client</h6>
+                                                    <span class="text-muted small">2 Day Ago</span>
+                                                </div>
+                                                <p class="text-muted mb-2">6 team members in a project</p>
+                                                <div class="d-flex align-items-center avatar-group ps-2">
+                                                    <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-2.png" loading="lazy" alt="avatar-2">
+                                                    <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar-1">
+                                                    <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-4.png" loading="lazy" alt="avatar-4">
+                                                    <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-9.png" loading="lazy" alt="avatar-9">
+                                                    <div class="avatar avatar-sm border border-2 border-white d-flex align-items-center justify-content-center bg-success">
+                                                        <span class="avatar-text" style="font-size:.7rem;">+5</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row g-3 row-deck mb-3">
+                                    <!-- My Teams -->
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="card rounded-4 mt-0">
+                                            <div class="card-body p-lg-4">
+                                                <h6 class="section-title mb-4 small text-uppercase">My Teams</h6>
+                                                <div class="d-flex gap-3 align-items-center mb-4">
+                                                    <img class="avatar" src="~/assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar">
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-0">React Developers</h6>
+                                                        <small class="text-muted">72 Members</small>
+                                                    </div>
+                                                    <span class="px-2 rounded small bg-danger-subtle text-danger">Developer</span>
+                                                </div>
+                                                <div class="d-flex gap-3 align-items-center mb-4">
+                                                    <img class="avatar" src="~/assets/images/avatar/avatar-2.png" loading="lazy" alt="avatar">
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-0">Support Team</h6>
+                                                        <small class="text-muted">122 Members</small>
+                                                    </div>
+                                                    <span class="px-2 rounded small bg-primary-subtle text-primary">Support</span>
+                                                </div>
+                                                <div class="d-flex gap-3 align-items-center mb-4">
+                                                    <img class="avatar" src="~/assets/images/avatar/avatar-3.png" loading="lazy" alt="avatar">
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-0">UI Designers</h6>
+                                                        <small class="text-muted">7 Members</small>
+                                                    </div>
+                                                    <span class="px-2 rounded small bg-info-subtle text-info">Designer</span>
+                                                </div>
+                                                <div class="d-flex gap-3 align-items-center mb-4">
+                                                    <img class="avatar" src="~/assets/images/avatar/avatar-4.png" loading="lazy" alt="avatar">
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-0">Vue.js Developers</h6>
+                                                        <small class="text-muted">289 Members</small>
+                                                    </div>
+                                                    <span class="px-2 rounded small bg-danger-subtle text-danger">Developer</span>
+                                                </div>
+                                                <div class="d-flex gap-3 align-items-center mb-3">
+                                                    <img class="avatar" src="~/assets/images/avatar/avatar-5.png" loading="lazy" alt="avatar">
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-0">Digital Marketing</h6>
+                                                        <small class="text-muted">24 Members</small>
+                                                    </div>
+                                                    <span class="px-2 rounded small bg-secondary-subtle text-secondary">Marketing</span>
+                                                </div>
+                                                <a href="#" class="text-center d-block mt-2 fw-semibold text-primary">View all teams</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Connections -->
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="card rounded-4 mt-0">
+                                            <div class="card-body p-lg-4">
+                                                <h6 class="section-title mb-4 small text-uppercase">Connections</h6>
+                                                <div class="d-flex gap-3 align-items-center mb-4">
+                                                    <img class="avatar"  src="~/assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar">
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-0">Cecilia Payne</h6>
+                                                        <small class="text-muted">45 Connections</small>
+                                                    </div>
+                                                    <button class="btn btn-sm btn-ripple btn-light"><i class="bi bi-person-check"></i></button>
+                                                </div>
+                                                <div class="d-flex gap-3 align-items-center mb-4">
+                                                    <img class="avatar"  src="~/assets/images/avatar/avatar-2.png" loading="lazy" alt="avatar">
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-0">Curtis Fletcher</h6>
+                                                        <small class="text-muted">1.3k Connections</small>
+                                                    </div>
+                                                    <button class="btn btn-sm btn-ripple btn-primary"><i class="bi bi-person-plus"></i></button>
+                                                </div>
+                                                <div class="d-flex gap-3 align-items-center mb-4">
+                                                    <img class="avatar"  src="~/assets/images/avatar/avatar-3.png" loading="lazy" alt="avatar">
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-0">Alice Stone</h6>
+                                                        <small class="text-muted">125 Connections</small>
+                                                    </div>
+                                                    <button class="btn btn-sm btn-ripple btn-primary"><i class="bi bi-person-plus"></i></button>
+                                                </div>
+                                                <div class="d-flex gap-3 align-items-center mb-4">
+                                                    <img class="avatar"  src="~/assets/images/avatar/avatar-4.png" loading="lazy" alt="avatar">
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-0">Darrell Barnes</h6>
+                                                        <small class="text-muted">456 Connections</small>
+                                                    </div>
+                                                    <button class="btn btn-sm btn-ripple btn-light"><i class="bi bi-person-check"></i></button>
+                                                </div>
+                                                <div class="d-flex gap-3 align-items-center mb-4">
+                                                    <img class="avatar"  src="~/assets/images/avatar/avatar-5.png" loading="lazy" alt="avatar">
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-0">Eugenia Moore</h6>
+                                                        <small class="text-muted">1.2k Connections</small>
+                                                    </div>
+                                                    <button class="btn btn-sm btn-ripple btn-primary"><i class="bi bi-person-plus"></i></button>
+                                                </div>
+                                                <a href="#" class="text-center d-block mt-2 fw-semibold text-primary">View all connections</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card rounded-4 mt-0 mb-3">
+                                    <div class="card-body p-0">
+                                        <h6 class="section-title p-3 p-lg-4 mb-0 small text-uppercase">My Project List</h6>
+                                        <div class="table-responsive">
+                                            <table class="table text-nowrap align-middle mb-0 w-100 card-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            <input type="checkbox" class="form-check-input fs-5" id="checkAll">
+                                                        </th>
+                                                        <th>Project</th>
+                                                        <th>Leader</th>
+                                                        <th>Team</th>
+                                                        <th>Progress</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- 1 -->
+                                                    <tr>
+                                                        <td><input type="checkbox" class="form-check-input fs-5 row-check"></td>
+                                                        <td>
+                                                            <div class="fw-semibold">E-commerce UI</div>
+                                                            <small class="text-muted">12 Feb 2024</small>
+                                                        </td>
+                                                        <td>Olivia</td>
+                                                        <td>
+                                                            <div class="d-flex align-items-center avatar-group ps-2">
+                                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar-1">
+                                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-2.png" loading="lazy" alt="avatar-2">
+                                                                <div class="avatar avatar-sm border border-2 border-white d-flex align-items-center justify-content-center bg-success">
+                                                                    <span class="avatar-text" style="font-size:.7rem;">+5</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="progress" style="height:6px;">
+                                                                <div class="progress-bar" style="width: 40%"></div>
+                                                            </div>
+                                                            <small class="text-muted">40%</small>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- 2 -->
+                                                    <tr>
+                                                        <td><input type="checkbox" class="form-check-input fs-5 row-check"></td>
+                                                        <td>
+                                                            <div class="fw-semibold">Crypto Dashboard</div>
+                                                            <small class="text-muted">01 Jan 2024</small>
+                                                        </td>
+                                                        <td>Marcus</td>
+                                                        <td>
+                                                            <div class="d-flex align-items-center avatar-group ps-2">
+                                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-2.png" loading="lazy" alt="avatar-2">
+                                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar-1">
+                                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-4.png" loading="lazy" alt="avatar-4">
+                                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-9.png" loading="lazy" alt="avatar-9">
+                                                                <div class="avatar avatar-sm border border-2 border-white d-flex align-items-center justify-content-center bg-success">
+                                                                    <span class="avatar-text" style="font-size:.7rem;">+5</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="progress" style="height:6px;">
+                                                                <div class="progress-bar bg-warning" style="width: 65%"></div>
+                                                            </div>
+                                                            <small class="text-muted">65%</small>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- 3 -->
+                                                    <tr>
+                                                        <td><input type="checkbox" class="form-check-input fs-5 row-check"></td>
+                                                        <td>
+                                                            <div class="fw-semibold">Travel App</div>
+                                                            <small class="text-muted">25 Mar 2024</small>
+                                                        </td>
+                                                        <td>Liam</td>
+                                                        <td>
+                                                            <div class="d-flex align-items-center avatar-group ps-2">
+                                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-8.png" loading="lazy" alt="avatar-8">
+                                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-6.png" loading="lazy" alt="avatar-6">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="progress" style="height:6px;">
+                                                                <div class="progress-bar bg-success" style="width: 90%"></div>
+                                                            </div>
+                                                            <small class="text-muted">90%</small>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- 4 -->
+                                                    <tr>
+                                                        <td><input type="checkbox" class="form-check-input fs-5 row-check"></td>
+                                                        <td>
+                                                            <div class="fw-semibold">AI Chatbot</div>
+                                                            <small class="text-muted">18 Apr 2024</small>
+                                                        </td>
+                                                        <td>Sophia</td>
+                                                        <td>
+                                                            <div class="d-flex align-items-center avatar-group ps-2">
+                                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-3.png" loading="lazy" alt="avatar-3">
+                                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-5.png" loading="lazy" alt="avatar-5">
+                                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-6.png" loading="lazy" alt="avatar-6">
+                                                                <div class="avatar avatar-sm border border-2 border-white d-flex align-items-center justify-content-center bg-success">
+                                                                    <span class="avatar-text" style="font-size:.7rem;">+5</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="progress" style="height:6px;">
+                                                                <div class="progress-bar bg-danger" style="width: 20%"></div>
+                                                            </div>
+                                                            <small class="text-muted">20%</small>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- 5 -->
+                                                    <tr>
+                                                        <td><input type="checkbox" class="form-check-input fs-5 row-check"></td>
+                                                        <td>
+                                                            <div class="fw-semibold">Marketing Website</div>
+                                                            <small class="text-muted">09 May 2024</small>
+                                                        </td>
+                                                        <td>Emma</td>
+                                                        <td>
+                                                            <div class="d-flex align-items-center avatar-group ps-2">
+                                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-10.png" loading="lazy" alt="avatar-10">
+                                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-12.png" loading="lazy" alt="avatar-12">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="progress" style="height:6px;">
+                                                                <div class="progress-bar bg-info" style="width: 55%"></div>
+                                                            </div>
+                                                            <small class="text-muted">55%</small>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tab content:: Post -->
+                    <div class="tab-pane fade" id="user-tab-Post" role="tabpanel" aria-labelledby="user-tab-Post" tabindex="0">
+                        <div class="row g-4">
+                            <div class="col-lg-8">
+                                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start border-bottom mb-4 pb-4 ">
+                                    <div class="me-sm-3 mb-3 mb-sm-0">
+                                        <div class="d-flex gap-2 align-items-center mb-2">
+                                            <img class="avatar avatar-xs" src="~/assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar">
+                                            <span class="fw-semibold">Mark Henderson</span>
+                                        </div>
+                                        <a class="text-decoration-none color-inherit" href="#" aria-label="blog title"><h5 class="fw-bold">The Future of Python — Why AI Will Push It Even Further</h5></a>
+                                        <p class="text-muted">Python continues to dominate machine learning, automation, and backend architecture. Here's what's next...</p>
+                                        <div class="d-flex align-items-center gap-3 small text-muted">
+                                            <span>3d ago</span>
+                                            <span><i class="bi bi-eye"></i> 4.2k</span>
+                                            <span><i class="bi bi-chat"></i> 118</span>
+                                        </div>
+                                    </div>
+                                    <div class="object-fit-cover order-first order-sm-last mb-3 mb-sm-0"><img src="~/assets/images/gallery/01.png" class="rounded-4 border img-fluid" loading="lazy" alt="avatar"></div>
+                                </div>
+                                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start border-bottom mb-4 pb-4 ">
+                                    <div class="me-3 mb-3 mb-sm-0">
+                                        <div class="d-flex gap-2 align-items-center mb-2">
+                                            <img class="avatar avatar-xs" src="~/assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar">
+                                            <span class="fw-semibold">Lana Becker</span>
+                                        </div>
+                                        <a class="text-decoration-none color-inherit" href="#" aria-label="blog title"><h5 class="fw-bold">UI Design Systems: Why Tokens & Structure Matter</h5></a>
+                                        <p class="text-muted">Design systems are evolving fast — but building them with consistency and scale requires strong foundations...</p>
+                                        <div class="d-flex align-items-center gap-3 small text-muted">
+                                            <span>1w ago</span>
+                                            <span><i class="bi bi-eye"></i> 1.1k</span>
+                                            <span><i class="bi bi-chat"></i> 76</span>
+                                        </div>
+                                    </div>
+                                    <div class="object-fit-cover order-first order-sm-last mb-3 mb-sm-0"><img src="~/assets/images/gallery/02.png" class="rounded-4 border img-fluid" loading="lazy" alt="avatar"></div>
+                                </div>
+                                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start">
+                                    <div class="me-3 mb-3 mb-sm-0">
+                                        <div class="d-flex gap-2 align-items-center mb-2">
+                                            <img class="avatar avatar-xs" src="~/assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar">
+                                            <span class="fw-semibold">Chris Morgan</span>
+                                        </div>
+                                        <a class="text-decoration-none color-inherit" href="#" aria-label="blog title"><h5 class="fw-bold">12 Best React Libraries for Animation & Charts in 2025</h5></a>
+                                        <p class="text-muted">React keeps evolving — here are the libraries that make development easier & more delightful...</p>
+                                        <div class="d-flex align-items-center gap-3 small text-muted">
+                                            <span>6d ago</span>
+                                            <span><i class="bi bi-eye"></i> 9.8k</span>
+                                            <span><i class="bi bi-chat"></i> 205</span>
+                                        </div>
+                                    </div>
+                                    <div class="object-fit-cover order-first order-sm-last mb-3 mb-sm-0"><img src="~/assets/images/gallery/04.png" class="rounded-4 border img-fluid" loading="lazy" alt="avatar"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="right-sidebar border-start">
+                                    <div class="px-4 mb-4 pb-4 border-bottom">
+                                        <button class="btn px-4 rounded-pill flex-fill btn-dark" data-bs-toggle="modal" data-bs-target="#inviteUserModal">
+                                            <i class="bi bi-person-plus"></i> Add New Post
+                                        </button>
+                                    </div>
+                                    <div class="px-4 mb-4 pb-4 border-bottom">
+                                        <h6 class="section-title mb-4 small text-uppercase">Staff Picks</h6>
+                                        <ul class="d-flex flex-column gap-3 ps-3">
+                                            <li>
+                                                <small class="text-muted">by Sarah Wood</small>
+                                                <p class="fw-semibold mb-1">Top Tools Developers Must Learn in 2025</p>
+                                                <span class="text-muted small">4d ago</span>
+                                            </li>
+                                            <li>
+                                                <small class="text-muted">by James Carter</small>
+                                                <p class="fw-semibold mb-1">Why Designers Need to Understand AI Workflows</p>
+                                                <span class="text-muted small">1w ago</span>
+                                            </li>
+                                            <li>
+                                                <small class="text-muted">by Olivia Marsh</small>
+                                                <p class="fw-semibold mb-1">How Web3 Changes Frontend Architecture</p>
+                                                <span class="text-muted small">2w ago</span>
+                                            </li>
+                                        </ul>
+                                        <a href="#" class="text-primary small d-block mt-3">See all picks →</a>
+                                    </div>
+                                    <div class="px-4">
+                                        <h6 class="section-title mb-4 small text-uppercase">Recommended Topics</h6>
+                                        <div class="d-flex flex-wrap gap-2">
+                                            <span class="badge bg-light text-dark px-3 py-2">UI Design</span>
+                                            <span class="badge bg-light text-dark px-3 py-2">Web Dev</span>
+                                            <span class="badge bg-light text-dark px-3 py-2">React</span>
+                                            <span class="badge bg-light text-dark px-3 py-2">UX Case Study</span>
+                                            <span class="badge bg-light text-dark px-3 py-2">AI Tools</span>
+                                            <span class="badge bg-light text-dark px-3 py-2">Technology</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tab content:: Project -->
+                    <div class="tab-pane fade" id="user-tab-Project" role="tabpanel" aria-labelledby="user-tab-Project" tabindex="0">
+                        <div class="row g-3">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="project-card rounded-4 bg-danger-subtle">
+                                    <span class="d-flex px-3 py-1 fs-12">URGENT</span>
+                                    <div class="card mt-0 rounded-4 bg-card border">
+                                        <div class="card-body p-lg-4 rounded-4">
+                                            <a href="#" class="text-decoration-none color-inherit"><h5 class="fw-bold mb-2">New Landing Page</h5></a>
+                                            <p class="text-muted small">Creating a landing page for SaaS product including animations and testimonials…</p>
+                                            <div class="d-flex align-items-center avatar-group ps-2 mb-3">
+                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar">
+                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-2.png" loading="lazy" alt="avatar">
+                                                <div class="avatar avatar-sm border border-2 border-white d-flex align-items-center justify-content-center bg-success">
+                                                    <span class="avatar-text" style="font-size:.7rem;">+5</span>
+                                                </div>
+                                            </div>
+                                            <span class="badge bg-primary px-3 py-2 mb-3 rounded-pill">Completed</span>
+                                            <div class="d-flex justify-content-between text-muted small mt-3">
+                                                <div><i class="bi bi-chat"></i> 14 <i class="bi bi-link-45deg ms-3"></i> 2 <i class="bi bi-folder ms-3"></i> 7</div>
+                                                <span>Oct 03</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="project-card rounded-4 bg-warning-subtle">
+                                    <span class="d-flex px-3 py-1 fs-12">HIGH</span>
+                                    <div class="card mt-0 rounded-4 bg-card border">
+                                        <div class="card-body p-lg-4 rounded-4">
+                                            <a href="#" class="text-decoration-none color-inherit"><h5 class="fw-bold mb-2">CRM UI Redesign</h5></a>
+                                            <p class="text-muted small">Improving customer flow, analytics widgets and new dark mode interface…</p>
+                                            <div class="d-flex align-items-center avatar-group ps-2 mb-3">
+                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-3.png" loading="lazy" alt="avatar">
+                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-4.png" loading="lazy" alt="avatar">
+                                            </div>
+                                            <span class="badge bg-info px-3 py-2 mb-3 rounded-pill">In Progress</span>
+                                            <div class="d-flex justify-content-between text-muted small mt-3">
+                                                <div><i class="bi bi-chat"></i> 6 <i class="bi bi-link-45deg ms-3"></i> 1 <i class="bi bi-folder ms-3"></i> 3</div>
+                                                <span>Sep 12</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="project-card rounded-4 bg-success-subtle">
+                                    <span class="d-flex px-3 py-1 fs-12">NORMAL</span>
+                                    <div class="card mt-0 rounded-4 bg-card border">
+                                        <div class="card-body p-lg-4 rounded-4">
+                                            <a href="#" class="text-decoration-none color-inherit"><h5 class="fw-bold mb-2">Mobile App Concept</h5></a>
+                                            <p class="text-muted small">Wireframing and UX planning for the new fintech mobile application…</p>
+                                            <div class="d-flex align-items-center avatar-group ps-2 mb-3">
+                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-5.png" loading="lazy" alt="avatar">
+                                                <div class="avatar avatar-sm border border-2 border-white d-flex align-items-center justify-content-center" style="background:#3b82f6;">
+                                                    <span class="avatar-text" style="font-size:.7rem;">+2</span>
+                                                </div>
+                                            </div>
+                                            <span class="badge bg-warning px-3 py-2 mb-3 rounded-pill">Pending</span>
+                                            <div class="d-flex justify-content-between text-muted small mt-3">
+                                                <div><i class="bi bi-chat"></i> 11 <i class="bi bi-link-45deg ms-3"></i> 3 <i class="bi bi-folder ms-3"></i> 4</div>
+                                                <span>Aug 28</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="project-card rounded-4 bg-primary-subtle">
+                                    <span class="d-flex px-3 py-1 fs-12">LOW</span>
+                                    <div class="card mt-0 rounded-4 bg-card border">
+                                        <div class="card-body p-lg-4 rounded-4">
+                                            <a href="#" class="text-decoration-none color-inherit"><h5 class="fw-bold mb-2">Dashboard Widgets</h5></a>
+                                            <p class="text-muted small">Adding new performance widgets, charts and analytics overview…</p>
+                                            <div class="d-flex align-items-center avatar-group ps-2 mb-3">
+                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-6.png" loading="lazy" alt="avatar">
+                                            </div>
+                                            <span class="badge bg-success px-3 py-2 mb-3 rounded-pill">Completed</span>
+                                            <div class="d-flex justify-content-between text-muted small mt-3">
+                                                <div><i class="bi bi-chat"></i> 4 <i class="bi bi-link-45deg ms-3"></i> 1 <i class="bi bi-folder ms-3"></i> 2</div>
+                                                <span>Aug 05</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="project-card rounded-4 bg-info-subtle">
+                                    <span class="d-flex px-3 py-1 fs-12">MEDIUM</span>
+                                    <div class="card mt-0 rounded-4 bg-card border">
+                                        <div class="card-body p-lg-4 rounded-4">
+                                            <a href="#" class="text-decoration-none color-inherit"><h5 class="fw-bold mb-2">Brand Guidelines</h5></a>
+                                            <p class="text-muted small">Preparing brand identity, typography system and color palette updates…</p>
+                                            <div class="d-flex align-items-center avatar-group ps-2 mb-3">
+                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-3.png" loading="lazy" alt="avatar">
+                                                <div class="avatar avatar-sm border border-2 border-white d-flex align-items-center justify-content-center" style="background:#ef4444;">
+                                                    <span class="avatar-text" style="font-size:.7rem;">+1</span>
+                                                </div>
+                                            </div>
+                                            <span class="badge bg-secondary px-3 py-2 mb-3 rounded-pill">Ongoing</span>
+                                            <div class="d-flex justify-content-between text-muted small mt-3">
+                                                <div><i class="bi bi-chat"></i> 9 <i class="bi bi-link-45deg ms-3"></i> 4 <i class="bi bi-folder ms-3"></i> 6</div>
+                                                <span>Jul 14</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="project-card rounded-4 bg-secondary-subtle">
+                                    <span class="d-flex px-3 py-1 fs-12">URGENT</span>
+                                    <div class="card mt-0 rounded-4 bg-card border">
+                                        <div class="card-body p-lg-4 rounded-4">
+                                            <a href="#" class="text-decoration-none color-inherit"><h5 class="fw-bold mb-2">Marketing Campaign</h5></a>
+                                            <p class="text-muted small">Planning a Q4 marketing strategy including video production and social ads…</p>
+                                            <div class="d-flex align-items-center avatar-group ps-2 mb-3">
+                                                <img class="avatar avatar-sm me-n2 border border-2 border-white" src="~/assets/images/avatar/avatar-7.png" loading="lazy" alt="avatar">
+                                            </div>
+                                            <span class="badge bg-danger px-3 py-2 mb-3 rounded-pill">In Progress</span>
+                                            <div class="d-flex justify-content-between text-muted small mt-3">
+                                                <div><i class="bi bi-chat"></i> 18 <i class="bi bi-link-45deg ms-3"></i> 5 <i class="bi bi-folder ms-3"></i> 9</div>
+                                                <span>Jun 22</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tab content:: Teams -->
+                    <div class="tab-pane fade" id="user-tab-Teams" role="tabpanel" aria-labelledby="user-tab-Teams" tabindex="0">
+                        <div class="row g-3">
+                            <div class="col-lg-3">
+                                <div class="d-flex flex-column flex-md-row gap-2 mb-3">
+                                    <button class="btn rounded-pill flex-fill btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#rolePermissionModal">
+                                        <i class="bi bi-shield-lock"></i> Roles
+                                    </button>
+                                    <button class="btn rounded-pill flex-fill btn-primary" data-bs-toggle="modal" data-bs-target="#inviteUserModal">
+                                        <i class="bi bi-person-plus"></i> Invite User
+                                    </button>
+                                </div>
+                                <div class="row g-2">
+                                    <div class="col-lg-12 col-mg-3 col-sm-3 col-6">
+                                        <div class="card rounded-4 mt-0">
+                                            <div class="card-body p-lg-4">
+                                                <p class="mb-2 text-muted small">Total Members</p>
+                                                <h5 class="mb-0 h2 fw-bold">12</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-mg-3 col-sm-3 col-6">
+                                        <div class="card rounded-4 mt-0">
+                                            <div class="card-body p-lg-4">
+                                                <p class="mb-2 text-muted small">Active</p>
+                                                <h5 class="mb-0 h2 fw-bold text-success">9</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-mg-3 col-sm-3 col-6">
+                                        <div class="card rounded-4 mt-0">
+                                            <div class="card-body p-lg-4">
+                                                <p class="mb-2 text-muted small">Pending</p>
+                                                <h5 class="mb-0 h2 fw-bold text-warning">2</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-mg-3 col-sm-3 col-6">
+                                        <div class="card rounded-4 mt-0">
+                                            <div class="card-body p-lg-4">
+                                                <p class="mb-2 text-muted small">Admins</p>
+                                                <h5 class="mb-0 h2 fw-bold">1</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="card rounded-4 mt-0 ms-lg-2">
+                                    <div class="card-body bg-light rounded-top-4">
+                                        <div class="row g-2">
+                                            <div class="col-md-4 col-sm-4">
+                                                <input type="search" class="form-control" placeholder="Search team member">
+                                            </div>
+                                            <div class="col-md-3 col-sm-4">
+                                                <select class="form-select">
+                                                    <option>All Roles</option>
+                                                    <option>Admin</option>
+                                                    <option>Manager</option>
+                                                    <option>Staff</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3 col-sm-4">
+                                                <select class="form-select">
+                                                    <option>All Status</option>
+                                                    <option>Active</option>
+                                                    <option>Pending</option>
+                                                    <option>Inactive</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2 col-sm-12">
+                                                <button class="btn btn-outline-secondary w-100">Reset</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover border-bottom-none text-nowrap align-middle mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Member</th>
+                                                    <th>Role</th>
+                                                    <th>Status</th>
+                                                    <th>Joined</th>
+                                                    <th class="text-end">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center gap-2">
+                                                            <img src="~/assets/images/avatar/avatar-1.png" class="avatar avatar-md border shadow-sm" alt="user avatar">
+                                                            <div>
+                                                                <div class="fw-semibold">John Carter</div>
+                                                                <div class="small text-muted">john@company.com</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>Admin</td>
+                                                    <td><span class="badge bg-success-subtle text-success">Active</span></td>
+                                                    <td>12 Jan 2024</td>
+                                                    <td class="text-end">
+                                                        <button class="btn btn-sm bg-primary-subtle" data-bs-toggle="modal" data-bs-target="#memberDetailsModal"><i class="bi bi-eye"></i></button>
+                                                        <button class="btn btn-sm bg-secondary-subtle "><i class="bi bi-pencil"></i></button>
+                                                        <button class="btn btn-sm bg-danger-subtle"><i class="bi bi-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center gap-2">
+                                                            <img src="~/assets/images/avatar/avatar-2.png" class="avatar avatar-md border shadow-sm" alt="user avatar">
+                                                            <div>
+                                                                <div class="fw-semibold">Sarah Wilson</div>
+                                                                <div class="small text-muted">sarah@company.com</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>Manager</td>
+                                                    <td><span class="badge bg-success-subtle text-success">Active</span></td>
+                                                    <td>04 Feb 2024</td>
+                                                    <td class="text-end">
+                                                        <button class="btn btn-sm bg-primary-subtle" data-bs-toggle="modal" data-bs-target="#memberDetailsModal"><i class="bi bi-eye"></i></button>
+                                                        <button class="btn btn-sm bg-secondary-subtle "><i class="bi bi-pencil"></i></button>
+                                                        <button class="btn btn-sm bg-danger-subtle"><i class="bi bi-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center gap-2">
+                                                            <img src="~/assets/images/avatar/avatar-3.png" class="avatar avatar-md border shadow-sm" alt="user avatar">
+                                                            <div>
+                                                                <div class="fw-semibold">David Miller</div>
+                                                                <div class="small text-muted">david@company.com</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>Staff</td>
+                                                    <td><span class="badge bg-warning-subtle text-warning">Pending</span></td>
+                                                    <td>20 Mar 2024</td>
+                                                    <td class="text-end">
+                                                        <button class="btn btn-sm bg-primary-subtle" data-bs-toggle="modal" data-bs-target="#memberDetailsModal"><i class="bi bi-eye"></i></button>
+                                                        <button class="btn btn-sm bg-secondary-subtle "><i class="bi bi-pencil"></i></button>
+                                                        <button class="btn btn-sm bg-danger-subtle"><i class="bi bi-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center gap-2">
+                                                            <img src="~/assets/images/avatar/avatar-4.png" class="avatar avatar-md border shadow-sm" alt="user avatar">
+                                                            <div>
+                                                                <div class="fw-semibold">Emma Brown</div>
+                                                                <div class="small text-muted">emma@company.com</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>Staff</td>
+                                                    <td><span class="badge bg-danger-subtle text-danger">Inactive</span></td>
+                                                    <td>01 Dec 2023</td>
+                                                    <td class="text-end">
+                                                        <button class="btn btn-sm bg-primary-subtle" data-bs-toggle="modal" data-bs-target="#memberDetailsModal"><i class="bi bi-eye"></i></button>
+                                                        <button class="btn btn-sm bg-secondary-subtle "><i class="bi bi-pencil"></i></button>
+                                                        <button class="btn btn-sm bg-danger-subtle"><i class="bi bi-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center gap-2">
+                                                            <img src="~/assets/images/avatar/avatar-5.png" class="avatar avatar-md border shadow-sm" alt="user avatar">
+                                                            <div>
+                                                                <div class="fw-semibold">Sarah Wilson</div>
+                                                                <div class="small text-muted">sarah@company.com</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>Manager</td>
+                                                    <td><span class="badge bg-success-subtle text-success">Active</span></td>
+                                                    <td>04 Feb 2024</td>
+                                                    <td class="text-end">
+                                                        <button class="btn btn-sm bg-primary-subtle" data-bs-toggle="modal" data-bs-target="#memberDetailsModal"><i class="bi bi-eye"></i></button>
+                                                        <button class="btn btn-sm bg-secondary-subtle "><i class="bi bi-pencil"></i></button>
+                                                        <button class="btn btn-sm bg-danger-subtle"><i class="bi bi-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center gap-2">
+                                                            <img src="~/assets/images/avatar/avatar-6.png" class="avatar avatar-md border shadow-sm" alt="user avatar">
+                                                            <div>
+                                                                <div class="fw-semibold">David Miller</div>
+                                                                <div class="small text-muted">david@company.com</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>Staff</td>
+                                                    <td><span class="badge bg-warning-subtle text-warning">Pending</span></td>
+                                                    <td>20 Mar 2024</td>
+                                                   <td class="text-end">
+                                                        <button class="btn btn-sm bg-primary-subtle" data-bs-toggle="modal" data-bs-target="#memberDetailsModal"><i class="bi bi-eye"></i></button>
+                                                        <button class="btn btn-sm bg-secondary-subtle "><i class="bi bi-pencil"></i></button>
+                                                        <button class="btn btn-sm bg-danger-subtle"><i class="bi bi-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tab content:: Activity -->
+                    <div class="tab-pane fade" id="user-tab-Activity" role="tabpanel" aria-labelledby="user-tab-Activity" tabindex="0">
+                        <div class="d-flex gap-2 gap-lg-4">
+                            <ul class="d-flex flex-column flex-wrap gap-1 small list-unstyled">
+                                <li><a class="d-flex rounded-pill text-decoration-none color-inherit px-3 py-1 bg-primary-gradient" href="#">2025</a></li>
+                                <li><a class="d-flex rounded-pill text-decoration-none color-inherit px-3 py-1 bg-light" href="#">2024</a></li>
+                                <li><a class="d-flex rounded-pill text-decoration-none color-inherit px-3 py-1 bg-light" href="#">2023</a></li>
+                                <li><a class="d-flex rounded-pill text-decoration-none color-inherit px-3 py-1 bg-light" href="#">2022</a></li>
+                                <li><a class="d-flex rounded-pill text-decoration-none color-inherit px-3 py-1 bg-light" href="#">2021</a></li>
+                                <li><a class="d-flex rounded-pill text-decoration-none color-inherit px-3 py-1 bg-light" href="#">2020</a></li>
+                            </ul>
+                            <div class="flex-fill">
+                                <div class="d-flex mb-4">
+                                    <div class="me-3">
+                                        <span class="timeline-dot bg-warning"></span>
+                                        <span class="timeline-line"></span>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="fw-semibold">Subscription plan upgraded</h6>
+                                            <span class="text-muted fs-12">1 hour ago</span>
+                                        </div>
+                                        <p class="text-muted mb-2">Pro plan activated with annual billing</p>
+                                        <span class="badge bg-warning-subtle text-warning small">Billing</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-4">
+                                    <div class="me-3">
+                                        <span class="timeline-dot bg-danger"></span>
+                                        <span class="timeline-line"></span>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="fw-semibold">Invoice payment failed</h6>
+                                            <span class="text-muted fs-12">2 hours ago</span>
+                                        </div>
+                                        <p class="text-muted mb-2">Payment failed due to insufficient funds</p>
+                                        <a href="#" class="btn btn-outline-danger btn-sm">
+                                            <i class="bi bi-exclamation-circle me-1"></i> Retry Payment
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-4">
+                                    <div class="me-3">
+                                        <span class="timeline-dot bg-secondary"></span>
+                                        <span class="timeline-line"></span>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="fw-semibold">New team member invited</h6>
+                                            <span class="text-muted fs-12">Yesterday</span>
+                                        </div>
+                                        <p class="text-muted mb-2">Invitation sent to <strong>alex@company.com</strong></p>
+                                        <span class="badge bg-secondary-subtle text-secondary small">Team</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-4">
+                                    <div class="me-3">
+                                        <span class="timeline-dot bg-primary"></span>
+                                        <span class="timeline-line"></span>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="fw-semibold">File uploaded</h6>
+                                            <span class="text-muted fs-12">Yesterday</span>
+                                        </div>
+                                        <p class="text-muted mb-2">New contract document uploaded</p>
+                                        <a href="#" class="btn btn-light border btn-sm">
+                                            <i class="bi bi-file-earmark-text me-1"></i> contract-v2.docx
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-4">
+                                    <div class="me-3">
+                                        <span class="timeline-dot bg-success"></span>
+                                        <span class="timeline-line"></span>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="fw-semibold">Task completed</h6>
+                                            <span class="text-muted fs-12">2 days ago</span>
+                                        </div>
+                                        <p class="text-muted mb-2">Design review task marked as completed</p>
+                                        <span class="badge bg-success-subtle text-success small">Task</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-2">
+                                    <div class="me-3">
+                                        <span class="timeline-dot bg-dark"></span>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="fw-semibold">Security settings updated</h6>
+                                            <span class="text-muted fs-12">3 days ago</span>
+                                        </div>
+                                        <p class="text-muted mb-0">Two-factor authentication enabled</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tab content:: Photos -->
+                    <div class="tab-pane fade" id="user-tab-Photos" role="tabpanel" aria-labelledby="user-tab-Photos" tabindex="0">
+                        <ul class="photo-grid list-unstyled mb-0">
+                            <li><img src="~/assets/images/gallery/01.png" loading="lazy" alt="photo gallery"></li>
+                            <li><img src="~/assets/images/gallery/02.png" loading="lazy" alt="photo gallery"></li>
+                            <li class="tall"><img src="~/assets/images/gallery/03.png" loading="lazy" alt="photo gallery"></li>
+                            <li class="wide"><img src="~/assets/images/gallery/04.png" loading="lazy" alt="photo gallery"></li>
+                            <li><img src="~/assets/images/gallery/05.png" loading="lazy" alt="photo gallery"></li>
+                            <li class="tall"><img src="~/assets/images/gallery/06.png" loading="lazy" alt="photo gallery"></li>
+                            <li class="big"><img src="~/assets/images/gallery/07.png" loading="lazy" alt="photo gallery"></li>
+                            <li><img src="~/assets/images/gallery/01.png" loading="lazy" alt="photo gallery"></li>
+                            <li class="wide"><img src="~/assets/images/gallery/08.png" loading="lazy" alt="photo gallery"></li>
+                            <li class="big"><img src="~/assets/images/gallery/09.png" loading="lazy" alt="photo gallery"></li>
+                            <li class="tall"><img src="~/assets/images/gallery/01.png" loading="lazy" alt="photo gallery"></li>
+                            <li><img src="~/assets/images/gallery/08.png" loading="lazy" alt="photo gallery"></li>
+                            <li><img src="~/assets/images/gallery/04.png" loading="lazy" alt="photo gallery"></li>
+                            <li><img src="~/assets/images/gallery/03.png" loading="lazy" alt="photo gallery"></li>
+                            <li><img src="~/assets/images/gallery/06.png" loading="lazy" alt="photo gallery"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
