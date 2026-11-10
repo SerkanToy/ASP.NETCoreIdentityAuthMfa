@@ -1,0 +1,52 @@
+﻿
+@{
+    bool isAuthenticated = User.Identity!.IsAuthenticated;
+}
+
+﻿@if (isAuthenticated)
+{
+      <div class="rightbar text-center d-flex flex-lg-column justify-content-between px-3 px-lg-0 py-2 py-lg-3">
+            <!-- recent chat -->
+            <ul class="list-unstyled d-flex flex-lg-column gap-3 align-items-center mb-0 overflow-x-auto pt-lg-1 me-4 me-lg-0 pb-2 li_animate">
+                <li data-bs-title="Alex Carter" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"><a href="#" data-bs-toggle="offcanvas" data-bs-target="#chat_drawer" aria-controls="chat_drawer"><img class="avatar avatar-sm border" src="assets/images/avatar/avatar-1.png" loading="lazy" alt="avatar 1"></a></li>
+                <li data-bs-title="James Walker" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"><a href="#" data-bs-toggle="offcanvas" data-bs-target="#chat_drawer" aria-controls="chat_drawer"><img class="avatar avatar-sm border" src="assets/images/avatar/avatar-2.png" loading="lazy" alt="avatar 2"></a></li>
+                <li data-bs-title="Yuna Kim" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"><a href="#" data-bs-toggle="offcanvas" data-bs-target="#chat_drawer" aria-controls="chat_drawer"><img class="avatar avatar-sm border" src="assets/images/avatar/avatar-3.png" loading="lazy" alt="avatar 3"></a></li>
+                <li data-bs-title="Ethan Brooks" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"><a href="#" data-bs-toggle="offcanvas" data-bs-target="#chat_drawer" aria-controls="chat_drawer"><img class="avatar avatar-sm border" src="assets/images/avatar/avatar-4.png" loading="lazy" alt="avatar 4"></a></li>
+                <li data-bs-title="Omar Al-Hassan" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"><a href="#" data-bs-toggle="offcanvas" data-bs-target="#chat_drawer" aria-controls="chat_drawer"><img class="avatar avatar-sm border" src="assets/images/avatar/avatar-5.png" loading="lazy" alt="avatar 5"></a></li>
+                <li data-bs-title="Nur Aisyah" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"><a href="#" data-bs-toggle="offcanvas" data-bs-target="#chat_drawer" aria-controls="chat_drawer"><img class="avatar avatar-sm border" src="assets/images/avatar/avatar-6.png" loading="lazy" alt="avatar 6"></a></li>
+                <li data-bs-title="Emma Laurent" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"><a href="#" data-bs-toggle="offcanvas" data-bs-target="#chat_drawer" aria-controls="chat_drawer"><img class="avatar avatar-sm border" src="assets/images/avatar/avatar-7.png" loading="lazy" alt="avatar 7"></a></li>
+                <li data-bs-title="Aarav Sharma" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"><a href="#" data-bs-toggle="offcanvas" data-bs-target="#chat_drawer" aria-controls="chat_drawer"><img class="avatar avatar-sm border" src="assets/images/avatar/avatar-8.png" loading="lazy" alt="avatar 8"></a></li>
+                <li data-bs-title="Amina Diallo" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"><a href="#" data-bs-toggle="offcanvas" data-bs-target="#chat_drawer" aria-controls="chat_drawer"><img class="avatar avatar-sm border" src="assets/images/avatar/avatar-9.png" loading="lazy" alt="avatar 9"></a></li>
+            </ul>
+            <button class="navbar-toggler d-lg-none fs-5 mb-2 mb-lg-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar" aria-label="Toggle navigation">
+                <i class="bi bi-layout-sidebar-inset"></i>
+            </button>
+            <!-- user profil and setting -->
+            <div class="d-none d-lg-inline-flex flex-column mt-auto">
+                <button class="btn icon-button border-0 py-2 px-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#setting_drawer" aria-label="Template Settings">
+                    <i class="bi bi-gear"></i>
+                </button>
+                <div class="dropdown dropup mt-lg-1">
+                    <button class="btn dropdown-toggle after-none border-0 p-0" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        <img class="rounded-circle border border-2 border-primary shadow" src="assets/images/avatar/avatar-1.png" width="34" height="34" alt="Profile" loading="lazy">
+                    </button>
+                    <div class="dropdown-menu p-lg-4 p-3 rounded-4 shadow-sm">
+                        <div class="mb-4">
+                            <h6 class="mb-0">@User.FindFirst("FullName")!.Value</h6>
+                            <p class="small">@User.Identity.Name</p>
+                            <form method="post" class="form-inline" asp-page="logout" asp-page-handler="LogOut">
+                               <button type="submit" class="btn btn-primary text-uppercase w-100 rounded-pill">Logout</button>
+                           </form>
+                        </div>
+                        <a class="dropdown-item rounded-pill" href="/my-profile">My Profile</a>
+                        <a class="dropdown-item rounded-pill" href="/myaccount">My Account</a>
+                        <a class="dropdown-item rounded-pill" href="/todo">My Todo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+else
+{
+    <a class="btn btn-link" href="/login">Login</a>
+}

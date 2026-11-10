@@ -1,12 +1,12 @@
-﻿@page
-@model NETCoreIdentityMFA.Ui.Pages.Inbox.IndexModel
+﻿@page "~/inbox"
+@model NETCoreIdentityMFA.Ui.Pages.Inbox.InboxModel
 @{
     ViewData["Title"] = "Inbox Page";
     ViewData["ccs"] = "body-layout sm inbox";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-@section Css  {
+@section Css {
 
     <link rel="stylesheet" href="~/assets/vendor/tagsinput/bootstrap-tagsinput.min.css" />
     <link rel="stylesheet" href="~/assets/css/inbox.css" />

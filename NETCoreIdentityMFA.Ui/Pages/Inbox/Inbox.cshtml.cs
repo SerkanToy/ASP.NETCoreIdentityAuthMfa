@@ -1,9 +1,10 @@
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace NETCoreIdentityMFA.Ui.Pages.Inbox
 {
-    public class IndexModel : PageModel
+    [Authorize(AuthenticationSchemes = "CookieAuth")]
+    public class InboxModel : PageModel
     {
         public void OnGet()
         {

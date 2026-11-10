@@ -1,0 +1,378 @@
+﻿@page "~/dashboard"
+@model NETCoreIdentityMFA.Ui.Pages.Dashboard.DashboardModel
+@{
+    ViewData["Title"] = "Dashboard Page";
+    //Layout = "~/Pages/Admin/Shared/_LoginLayout.cshtml";
+}
+
+@section Css {
+    <link rel="stylesheet" href="~/assets/css/vendor/charts.css" />
+}
+
+@section Scripts {
+    <script src="~/assets/vendor/apexcharts/apexcharts.js"></script>
+    <script src="~/assets/js/hr/hr-dashboard.js"></script>
+}
+
+<main class="app-body border">
+    <!-- page header, Breadcrumb and page action btn -->
+    <div class="page-header py-2 py-lg-4 p-lg-4">
+        <div class="container-fluid">
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+                <div class="align-items-lg-start d-flex flex-column justify-content-center">
+                    <h1 class="fs-5 section-title mb-0">HR Insights Dashboard</h1>
+                    <h2 class="small text-muted fw-normal">Welcome back to DashQ workspace.</h2>
+                </div>
+                <div class="d-flex gap-1 align-items-center flex-fill flex-sm-grow-0 border border-secondary-subtle rounded-pill px-2 mt-2 mt-md-0">
+                    <input class="form-control fs-14 border-0 bg-transparent rounded-pill js-daterange focus-ring-none" type="text" name="daterange" aria-label="Date Range Filter">
+                    <div class="vr"></div>
+                    <div class="d-flex gap-1">
+                        <button class="btn fs-14 btn-link px-2 btn-ripple" aria-label="Share with"><i class="bi bi-share"></i></button>
+                        <button class="btn fs-14 btn-link px-2 btn-ripple" aria-label="PDF Download"><i class="bi bi-filetype-pdf"></i></button>
+                        <button class="btn fs-14 btn-link px-2 btn-ripple btn-fullscreen-main d-none d-sm-inline-block" data-bs-toggle="tooltip" data-bs-title="Main App Body Fullscreen" aria-label="Main App Body Fullscreen"><i class="bi bi-fullscreen"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="py-2 py-lg-4 p-lg-4">
+        <div class="container-fluid">
+            <div class="row g-3">
+                <!-- Small card stats -->
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                    <div class="row g-3">
+                        <!-- Total Employees -->
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                            <div class="card rounded-4 mt-0 p-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>
+                                <p class="small mb-1 mt-3">Total Employees</p>
+                                <h3 class="h5 mb-0 fw-bold"><span class="counter" data-target="1208">0</span></h3>
+                            </div>
+                        </div>
+                        <!-- New Hires -->
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                            <div class="card rounded-4 mt-0 p-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4c.96 0 1.84 .338 2.53 .901" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M16 19h6" /><path d="M19 16v6" /></svg>
+                                <p class="small mb-1 mt-3">New Hires</p>
+                                <h3 class="h5 mb-0 fw-bold"><span class="counter" data-target="65">0</span></h3>
+                            </div>
+                        </div>
+                        <!-- On Leave Today -->
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                            <div class="card rounded-4 mt-0 p-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21h-6a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4.5" /><path d="M16 3v4" /><path d="M8 3v4" /><path d="M4 11h16" /><path d="M17 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M22 22a2 2 0 0 0 -2 -2h-2a2 2 0 0 0 -2 2" /></svg>
+                                <p class="small mb-1 mt-3">On Leave Today</p>
+                                <h3 class="h5 mb-0 fw-bold"><span class="counter" data-target="34">0</span></h3>
+                            </div>
+                        </div>
+                        <!-- Open Positions -->
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                            <div class="card rounded-4 mt-0 p-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h1.5" /><path d="M15 18a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M20.2 20.2l1.8 1.8" /></svg>
+                                <p class="small mb-1 mt-3">Open Positions</p>
+                                <h3 class="h5 mb-0 fw-bold"><span class="counter" data-target="77">0</span></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dept. Distribution -->
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                    <div class="card rounded-4 mt-0">
+                        <div class="card-body">
+                            <h6>Dept. Distribution</h6>
+                            <div id="DeptDistribution"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Interviews Today -->
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                    <div class="card rounded-4 mt-0 h-100">
+                        <div class="card-body">
+                            <h6 class="mb-4">Interviews Today</h6>
+                            <div class="d-flex flex-column gap-4">
+                                <div class="d-flex align-items-center gap-2">
+                                    <img class="avatar border" src="~/assets/images/avatar/avatar-11.png" loading="lazy" alt="avatar">
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-0 fw-bold small">Alex Kendrick</h6>
+                                        <p class="text-muted fs-12 mb-0">Node.js Developer • 2:00 PM</p>
+                                    </div>
+                                    <button class="btn btn-sm fs-12 bg-body-tertiary border rounded-pill px-3">View</button>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <img class="avatar border" src="~/assets/images/avatar/avatar-2.png" loading="lazy" alt="avatar">
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-0 fw-bold small">Sarah Parker</h6>
+                                        <p class="text-muted fs-12 mb-0">Product Manager • 4:30 PM</p>
+                                    </div>
+                                    <button class="btn btn-sm fs-12 bg-body-tertiary border rounded-pill px-3">View</button>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <img class="avatar border" src="~/assets/images/avatar/avatar-12.png" loading="lazy" alt="avatar">
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-0 fw-bold small">Maria Lopez</h6>
+                                        <p class="text-muted fs-12 mb-0">Angular Developer • 5:30 PM</p>
+                                    </div>
+                                    <button class="btn btn-sm fs-12 bg-body-tertiary border rounded-pill px-3">View</button>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <img class="avatar border" src="~/assets/images/avatar/avatar-15.png" loading="lazy" alt="avatar">
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-0 fw-bold small">Maria Lopez</h6>
+                                        <p class="text-muted fs-12 mb-0">Angular Developer • 5:30 PM</p>
+                                    </div>
+                                    <button class="btn btn-sm fs-12 bg-body-tertiary border rounded-pill px-3">View</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pending Leave Requests -->
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                    <div class="card rounded-4 mt-0 h-100">
+                        <div class="card-body">
+                            <h6 class="mb-4">Pending Leave Requests</h6>
+                            <ul class="list-unstyled d-flex flex-column gap-1 mb-0">
+                                <li class="bg-body-tertiary py-2 px-3 rounded d-flex justify-content-between gap-2 align-items-center border">
+                                    <div class="d-flex align-items-center gap-2 lh-sm">
+                                        <img src="~/assets/images/avatar/avatar-8.png" loading="lazy" class="avatar border border-2 border-white" alt="avatar">
+                                        <div>
+                                            <h6 class="mb-0 small">Alex Carter</h6>
+                                            <span class="fs-12 text-muted">Sick Leave</span>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-danger-subtle border border-danger-subtle text-danger-emphasis rounded-pill">Pending</span>
+                                </li>
+                                <li class="bg-body-tertiary py-2 px-3 rounded d-flex justify-content-between gap-2 align-items-center border">
+                                    <div class="d-flex align-items-center gap-2 lh-sm">
+                                        <img src="~/assets/images/avatar/avatar-14.png" loading="lazy" class="avatar border border-2 border-white" alt="avatar">
+                                        <div>
+                                            <h6 class="mb-0 small">Sophia Lee</h6>
+                                            <span class="fs-12 text-muted">Annual Leave</span>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-danger-subtle border border-danger-subtle text-danger-emphasis rounded-pill">Pending</span>
+                                </li>
+                                <li class="bg-body-tertiary py-2 px-3 rounded d-flex justify-content-between gap-2 align-items-center border">
+                                    <div class="d-flex align-items-center gap-2 lh-sm">
+                                        <img src="~/assets/images/avatar/avatar-10.png" loading="lazy" class="avatar border border-2 border-white" alt="avatar">
+                                        <div>
+                                            <h6 class="mb-0 small">Daniel Kim</h6>
+                                            <span class="fs-12 text-muted">Sick Leave</span>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-success-subtle border border-success-subtle text-success-emphasis rounded-pill">Approved</span>
+                                </li>
+                                <li class="bg-body-tertiary py-2 px-3 rounded d-flex justify-content-between gap-2 align-items-center border">
+                                    <div class="d-flex align-items-center gap-2 lh-sm">
+                                        <img src="~/assets/images/avatar/avatar-4.png" loading="lazy" class="avatar border border-2 border-white" alt="avatar">
+                                        <div>
+                                            <h6 class="mb-0 small">Sophia Lee</h6>
+                                            <span class="fs-12 text-muted">Annual Leave</span>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-danger-subtle border border-danger-subtle text-danger-emphasis rounded-pill">Pending</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Attendance Overview -->
+                <div class="col-xl-8">
+                    <div class="card rounded-4 mt-0">
+                        <div class="card-body">
+                            <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+                                <h6 class="mb-0">Attendance Overview</h6>
+                                <span class="text-muted small">Last 6 Months</span>
+                            </div>
+                            <div class="row g-4">
+                                <!-- Small card stats -->
+                                <div class="col-lg-3">
+                                    <div class="bg-body-tertiary border h-100 rounded-4 p-3">
+                                        <div class="row g-4">
+                                            <div class="col-lg-12 col-md-4 col-sm-4 col-4">
+                                                <p class="mb-1 small">On Time</p>
+                                                <h4 class="mb-0"><span class="counter" data-target="697">0</span></h4>
+                                            </div>
+                                            <div class="col-lg-12 col-md-4 col-sm-4 col-4">
+                                                <p class="mb-1 small">Late</p>
+                                                <h4 class="mb-0"><span class="counter" data-target="66">0</span></h4>
+                                            </div>
+                                            <div class="col-lg-12 col-md-4 col-sm-4 col-4">
+                                                <p class="mb-1 small">Absent</p>
+                                                <h4 class="mb-0"><span class="counter" data-target="45">0</span></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Chart -->
+                                <div class=" col-lg-9">
+                                    <div id="attendanceDetailChart" style="margin-inline: -15px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Company Pay -->
+                <div class="col-xl-6">
+                    <div class="card rounded-4 mt-0 h-100">
+                        <div class="card-body">
+                            <p class="mb-3">Company Pay</p>
+                            <div class="rounded-chart" style="margin-top: -10px; margin-bottom: -20px;" id="CompanyPay"></div>
+                            <div class="row g-3 align-items-center border-top mt-3">
+                                <div class="col-sm-6">
+                                    <p class="mb-0 small text-muted">2026 Download Report Company Trends and Insights</p>
+                                </div>
+                                <div class="col-sm-6 text-sm-end">
+                                    <button type="button" class="btn btn-sm btn-primary rounded-pill btn-ripple px-3"><i class="bi bi-cloud-arrow-down me-1"></i>Download Report</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Celebrations -->
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                    <div class="card rounded-4 mt-0 h-100">
+                        <div class="card-body">
+                            <h6 class="mb-4">Celebrations</h6>
+                            <div class="d-flex flex-column gap-3">
+                                <div class="d-flex align-items-center gap-2 lh-sm border-bottom pb-3">
+                                    <img src="~/assets/images/avatar/avatar-5.png" loading="lazy" class="avatar" alt="avatar">
+                                    <div>
+                                        <h6 class="mb-0 small">Alex Carter</h6>
+                                        <span class="fs-12 text-muted"><i class="bi bi-cake2 text-danger me-2"></i>Birthday Today!</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center gap-2 lh-sm border-bottom pb-3">
+                                    <img src="~/assets/images/avatar/avatar-2.png" loading="lazy" class="avatar" alt="avatar">
+                                    <div>
+                                        <h6 class="mb-0 small">Sophia Lee</h6>
+                                        <span class="fs-12 text-muted"><i class="bi bi-award text-primary me-2"></i>5yr Anniversary</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center gap-2 lh-sm">
+                                    <img src="~/assets/images/avatar/avatar-9.png" loading="lazy" class="avatar" alt="avatar">
+                                    <div>
+                                        <h6 class="mb-0 small">Daniel Kim</h6>
+                                        <span class="fs-12 text-muted"><i class="bi bi-cake2 text-danger me-2"></i>Birthday Today!</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Working Format -->
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                    <div class="card rounded-4 mt-0 h-100">
+                        <div class="card-body d-flex flex-column">
+                            <h6 class="mb-4">Working Format</h6>
+                            <div class="mt-auto">
+                                <div id="WorkingFormat"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Recent Personnel Changes -->
+                <div class="col-12">
+                    <div class="card rounded-4 mt-0">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6 class="mb-0">Recent Personnel Changes</h6>
+                                <button class="btn btn-sm btn-dark px-3 btn-ripple rounded-pill">Export Log</button>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table text-nowrap align-middle table-hover border-top w-100 border-bottom-none mb-0 small">
+                                    <thead class="text-uppercase">
+                                        <tr>
+                                            <th>Employee</th>
+                                            <th>Change Type</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <img src="~/assets/images/avatar/avatar-10.png" class="avatar" loading="lazy" alt="avatar">
+                                                    <div>
+                                                        <div class="fw-bold">Marcia Hill</div>
+                                                        <div class="small text-muted">Engineering</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Promotion</td>
+                                            <td class="text-muted">Feb 15, 2026</td>
+                                            <td><span class="badge bg-success-subtle border border-success-subtle text-success-emphasis rounded-pill">Approved</span></td>
+                                            <td><button class="btn btn-sm bg-body-tertiary rounded-pill btn-ripple px-3 border" type="button" data-bs-toggle="modal" data-bs-target="#detailModal" aria-label="View details">View Details</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <img src="~/assets/images/avatar/avatar-5.png" class="avatar" loading="lazy" alt="avatar">
+                                                    <div>
+                                                        <div class="fw-bold">Sofia Rodriguez</div>
+                                                        <div class="small text-muted">QA Engineer</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Transfer</td>
+                                            <td class="text-muted">Feb 12, 2026</td>
+                                            <td><span class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill">Pending</span></td>
+                                            <td><button class="btn btn-sm bg-body-tertiary rounded-pill btn-ripple px-3 border" type="button" data-bs-toggle="modal" data-bs-target="#detailModal" aria-label="View details">View Details</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <img src="~/assets/images/avatar/avatar-4.png" class="avatar" loading="lazy" alt="avatar">
+                                                    <div>
+                                                        <div class="fw-bold">Sarah Kong</div>
+                                                        <div class="small text-muted">UX Researcher</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Salary Adjustment</td>
+                                            <td class="text-muted">Feb 10, 2026</td>
+                                            <td><span class="badge bg-success-subtle border border-success-subtle text-success-emphasis rounded-pill">Approved</span></td>
+                                            <td><button class="btn btn-sm bg-body-tertiary rounded-pill btn-ripple px-3 border" type="button" data-bs-toggle="modal" data-bs-target="#detailModal" aria-label="View details">View Details</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <img src="~/assets/images/avatar/avatar-7.png" class="avatar" loading="lazy" alt="avatar">
+                                                    <div>
+                                                        <div class="fw-bold">Jordan Smith</div>
+                                                        <div class="small text-muted">Product Manager</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Resignation</td>
+                                            <td class="text-muted">Feb 08, 2026</td>
+                                            <td><span class="badge bg-danger-subtle border border-danger-subtle text-danger-emphasis rounded-pill">Finalized</span></td>
+                                            <td><button class="btn btn-sm bg-body-tertiary rounded-pill btn-ripple px-3 border" type="button" data-bs-toggle="modal" data-bs-target="#detailModal" aria-label="View details">View Details</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <img src="~/assets/images/avatar/avatar-12.png" class="avatar" loading="lazy" alt="avatar">
+                                                    <div>
+                                                        <div class="fw-bold">Arjun Mehta</div>
+                                                        <div class="small text-muted">Engineering</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Hiring</td>
+                                            <td class="text-muted">Feb 05, 2026</td>
+                                            <td><span class="badge bg-primary-subtle border border-primary-subtle text-primary-emphasis rounded-pill">Active</span></td>
+                                            <td><button class="btn btn-sm bg-body-tertiary rounded-pill btn-ripple px-3 border" type="button" data-bs-toggle="modal" data-bs-target="#detailModal" aria-label="View details">View Details</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

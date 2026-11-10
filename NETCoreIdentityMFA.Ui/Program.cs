@@ -3,7 +3,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-builder.Services.AddAuthentication()
+builder.Services.AddAuthentication("CookieAuth")
     .AddCookie("CookieAuth", opt =>
     {
         opt.Cookie.Name = "CookieAuth";
@@ -12,6 +12,21 @@ builder.Services.AddAuthentication()
         opt.AccessDeniedPath = "/AccessDenied";
     });
 
+builder.Services.AddAuthentication("AdminCookieAuth")
+    .AddCookie("AdminCookieAuth", opt =>
+    {
+        opt.Cookie.Name = "AdminCookieAuth";
+        opt.LoginPath = "/Login";
+        opt.LogoutPath = "/Logout";
+        opt.AccessDeniedPath = "/AccessDenied";
+    });
+
+builder.Services.AddAuthorization(opt =>
+{
+    opt.AddPolicy(name:"ArchiveDepartman",policy => policy.RequireClaim("Department", "archive"));
+    opt.AddPolicy(name: "ManagerOnly", policy => policy.RequireClaim("Manager").RequireClaim("Admin"));
+    opt.AddPolicy(name: "ManagerOnly", policy => policy.RequireClaim("Admin"));
+});
 
 var app = builder.Build();
 
@@ -27,6 +42,7 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
